@@ -35,4 +35,6 @@ public class ItemType {
 		this.typeName = typeName;
 	}
 	
+	
+	
 }

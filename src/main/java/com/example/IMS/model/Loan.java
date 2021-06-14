@@ -58,4 +58,6 @@ public class Loan {
 		this.typeName = typeName;
 	}
 	
+	
+	
 }
