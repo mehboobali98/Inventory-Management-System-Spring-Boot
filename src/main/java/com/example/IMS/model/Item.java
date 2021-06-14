@@ -1,5 +1,8 @@
 package com.example.IMS.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +42,10 @@ public class Item {
 	
 	@Column(name = "item_status")
 	private String itemStatus;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
+	@JoinColumn(name = "item_id_fk", referencedColumnName = "item_id")
+	private List<Loan> loan = new ArrayList<>();
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_type_fk")
@@ -119,7 +127,13 @@ public class Item {
 	public void setVendor(Vendor vendor) {
 		this.vendor = vendor;
 	}
-	
-	
 
+	public List<Loan> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<Loan> loan) {
+		this.loan = loan;
+	}
+	
 }

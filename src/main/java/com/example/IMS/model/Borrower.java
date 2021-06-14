@@ -1,10 +1,17 @@
 package com.example.IMS.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,6 +32,10 @@ public class Borrower {
 	
 	@Column(name = "email")
 	private String email;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
+	@JoinColumn(name = "borrower_id_fk", referencedColumnName = "borrower_id")
+	private List<Loan> loan = new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -57,5 +68,15 @@ public class Borrower {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public List<Loan> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<Loan> loan) {
+		this.loan = loan;
+	}
+	
+	
 	
 }

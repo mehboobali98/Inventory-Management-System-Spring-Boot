@@ -1,18 +1,16 @@
 package com.example.IMS.model;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Loan")
 public class Loan {
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -28,14 +26,6 @@ public class Loan {
 	@Column(name = "type_name")
 	private String typeName;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
-	@JoinColumn(name = "item_id_fk")
-	private List<Item> items = new ArrayList<>();
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
-	@JoinColumn(name = "borrower_id_fk")
-	private List<Borrower> borrowers = new ArrayList<>();
-
 	public long getId() {
 		return id;
 	}
@@ -67,22 +57,5 @@ public class Loan {
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
 	}
-
-	public List<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
-
-	public List<Borrower> getBorrowers() {
-		return borrowers;
-	}
-
-	public void setBorrowers(List<Borrower> borrowers) {
-		this.borrowers = borrowers;
-	}
-	
 	
 }
