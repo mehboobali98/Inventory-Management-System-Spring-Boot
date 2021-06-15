@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<title>Issue Item - Inventory Management System</title>
+		<link href="css/styles.css" rel="stylesheet" />
+		<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="sb-nav-fixed">
+		<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+			<a class="navbar-brand" href="../../index.html">Welcome!</a>
+			<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+			<!-- Navbar Search-->
+			<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+				<div class="input-group">
+					<input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+					</div>
+				</div>
+			</form>
+			<!-- Navbar-->
+			<ul class="navbar-nav ml-auto ml-md-0">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="#">Settings</a>
+						<a class="dropdown-item" href="#">Activity Log</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="../Authentication/login.html">Logout</a>
+					</div>
+				</li>
+			</ul>
+		</nav>
+		<div id="layoutSidenav">
+			<div id="layoutSidenav_nav">
+				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+					<div class="sb-sidenav-menu">
+						<div class="nav">
+							<a class="nav-link" href="../../index.html">
+								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+								Homepage
+							</a>
+							<div class="sb-sidenav-menu-heading">Interface</div>
+							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+								<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+								Interfaces
+								<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+							</a>
+							<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+								<nav class="sb-sidenav-menu-nested nav">
+									<a class="nav-link" href="../../layout-sidenav-light.html">Light Sidenav</a>
+								</nav>
+							</div>
+							<div class="sb-sidenav-menu-heading">Modules</div>
+							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+								<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+								Modules
+								<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+							</a>
+							<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+								<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+										Authentication
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../Authentication/login.html">Login</a>
+											<a class="nav-link" href="../Authentication/register.html">Register</a>
+										</nav>
+									</div>
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseItem" aria-expanded="false" aria-controls="pagesCollapseItem">
+										Item Management
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseItem" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../Item Management/Manage Inventory.html">Manage Inventory Items</a>
+											<a class="nav-link" href="../Item Management/Add new item.html">Add a new Item</a>
+										</nav>
+									</div>
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseItemIssue" aria-expanded="false" aria-controls="pagesCollapseItemIssue">
+										Item Issuance
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseItemIssue" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../Item Issuance/HighPres.html">Check-out High-Precedence Items</a>
+											<a class="nav-link" href="../Item Issuance/LowPres.html">Check-out Low-Precedence Items</a>
+										</nav>
+									</div>
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseItemReturn" aria-expanded="false" aria-controls="pagesCollapseItemReturn">
+										Item Return
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseItemReturn" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../Item Return/ItemReturn.html">Check-in Item</a>
+										</nav>
+									</div>
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseFine" aria-expanded="false" aria-controls="pagesCollapseFine">
+										Fine
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseFine" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../Fine/Fine.html">Fine Calculation</a>
+										</nav>
+									</div>
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseItemRepair" aria-expanded="false" aria-controls="pagesCollapseItemRepair">
+										Item Repairing
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseItemRepair" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../Item Repair/Item_Repair.html">Repair Item</a>
+										</nav>
+									</div>
+									<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseUser" aria-expanded="false" aria-controls="pagesCollapseUser">
+										User Management
+										<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+									</a>
+									<div class="collapse" id="pagesCollapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+											<a class="nav-link" href="../User Management/ManageUserAccount.html">User Account Management</a>
+											<a class="nav-link" href="../User Management/AddNewUser.html">Add a new User</a>
+											<a class="nav-link" href="../User Management/ForgotPassword.html">Change Password</a>
+										</nav>
+									</div>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<div class="sb-sidenav-footer">
+						<div class="small">Logged in as:</div>
+						Inventory Manager
+					</div>
+				</nav>
+			</div>
+			<!-- Form starts from here -->
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+					<form class="needs-validation" action="#"id="contact_form" novalidate>
+						<!-- Form Name -->
+						<!-- Form Name -->
+						<legend>
+							<h2><b>Issue Low Precedence Item</b></h2>
+						</legend>
+						<hr>
+						<ol class="breadcrumb mb-4">
+							<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+							<li class="breadcrumb-item active">Item Issuance</a></li>
+							<li class="breadcrumb-item active">Low Precedence Item</li>
+						</ol>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Item ID</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="Item ID" placeholder="Item ID" class="form-control" type="number">
+								</div>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Borrower ID</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="Borrower ID" placeholder="Borrower ID" class="form-control" type="number">
+								</div>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Fine Amount</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="fineAmount" placeholder="Enter Fine Amount" class="form-control" type="text">
+								</div>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Remaining Quantity</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="Remaining Quantity" placeholder="Enter Remaining Quantity" class="form-control"
+										type="number">
+								</div>
+							</div>
+						</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Issue Date </label>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="date" id="birthday" name="birthday">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label">Due Date </label>
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="date" id="birthday" name="birthday">
+							</div>
+						</div>
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label"></label>
+						<div class="col-md-4"><br>
+							<button id="enter_bid" type="submit" class="btn btn-success">Issue Item</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Cancel</button>
+						</div>
+					</div>
+					</form>
+					<!-- The Modal -->
+					<div class="modal fade" id="myModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Warning!</h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<!-- Modal body -->
+								<div class="modal-body">
+									Are you sure you want to cancel? All your changes will be lost.
+								</div>
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+									<button id="continue" type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+	</body>
+</html>
