@@ -14,7 +14,6 @@ The ERD of the project was developed based on the functional requirements and is
 <img src="/Resources/IMS-ERD.PNG">
 </p>
 
-
 ## Tech Stack
 * Spring Boot
 * Thymeleaf
