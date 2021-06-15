@@ -16,7 +16,7 @@ The ERD of the project was developed based on the functional requirements and is
 
 A prototype of the project was developed to identify the interfaces and to develop navigation between different screens. A demonstration is shown in the video below: 
 
-[Video Demo] (https://user-images.githubusercontent.com/57248707/122088515-38f7bd00-ce1f-11eb-8bc7-3bdb428f7858.mp4)
+https://user-images.githubusercontent.com/57248707/122088515-38f7bd00-ce1f-11eb-8bc7-3bdb428f7858.mp4
 
 ## Tech Stack
 
