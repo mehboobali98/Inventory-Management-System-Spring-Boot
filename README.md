@@ -1,3 +1,6 @@
+
+https://user-images.githubusercontent.com/57248707/122086655-5af04000-ce1d-11eb-8694-89cd04c38108.mp4
+
 # Inventory Management System 
 
 Organizations use management systems to regularize their tasks. They can be simple or complex depending on the needs of the organization. An inventory management system (or inventory
@@ -13,6 +16,12 @@ The ERD of the project was developed based on the functional requirements and is
 <p align="center">
 <img src="/Resources/IMS-ERD.PNG">
 </p>
+
+## Project Prototype Demo
+
+Project type was developed to identify the interfaces and ensure navigation between different pages. A demonstration is shown in the video below:
+
+[Video Demo] (https://user-images.githubusercontent.com/57248707/122086687-62afe480-ce1d-11eb-9e95-6457cad5eaa5.mp4)
 
 ## Tech Stack
 * Spring Boot
