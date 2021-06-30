@@ -49,7 +49,14 @@ public class ItemRepairController {
 	}
 
 	@GetMapping("/ItemRepairDelete/{id}")
-	public String Delete(@PathVariable (value = "id") long id) {
+	public String Delete(@PathVariable (value = "id") long id, Model model) {
+		ItemRepair itemRepair = itemRepairService.findItemRepairById(id);
+		model.addAttribute("itemRepairDto", itemRepairConvertor.modelToDto(itemRepair));
+		return "/Item Repair/Delete";
+	}
+	
+	@PostMapping("/ItemRepairDelete/{id}")
+	public String Delete(@PathVariable (value = "id") long id, @ModelAttribute("itemRepairDto") ItemRepairDto itemRepairDto) {
 		itemRepairService.deleteItemRepairById(id);
 		return "redirect:/ItemRepairView";
 	}
