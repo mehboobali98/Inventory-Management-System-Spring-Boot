@@ -30,7 +30,7 @@ public class ItemRepair {
 	@JoinColumn(name = "item_id_fk")
 	private Item item;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendor_id_fk")
 	private Vendor vendor;
 
