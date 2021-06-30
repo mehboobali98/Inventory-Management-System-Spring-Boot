@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<!--- Navbar ends here--->
+			<!-- Form starts from here -->
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+					<h2>Item Repair Edit Form</h2>
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+						<li class="breadcrumb-item active">Item Repair Edit</a></li>
+					</ol>
+					<form th:action="@{/ItemRepairCreate}" th:object="${itemRepairDto}" method="post">
+						<div class="form-group">
+							<input type="hidden" th:field = "*{id}" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Item Id:</label>
+							<input type="text" th:field = "*{itemId}" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Vendor Id:</label>
+							<input type="text" th:field = "*{vendorId}" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Item Price:</label>
+							<input type="text" th:field = "*{price}" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Repair Cost:</label>
+							<input type="text" th:field = "*{repairCost}" class="form-control">
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Form ends here -->
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<div th:replace="footer :: myFooter"></div>
+	</body>
+</html>
