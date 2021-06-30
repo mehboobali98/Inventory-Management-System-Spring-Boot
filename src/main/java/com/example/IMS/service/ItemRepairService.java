@@ -13,16 +13,14 @@ public class ItemRepairService implements IItemRepairService {
 
 	@Autowired
 	private IItemRepairRepository itemRepairRepository;
-	
+
 	@Override
 	public List<ItemRepair> getAllRepairItems() {
-		// TODO Auto-generated method stub
 		return itemRepairRepository.findAll();
 	}
-	
+
 	@Override
-	public void saveItemRepair(ItemRepair itemRepair)
-	{
+	public void saveItemRepair(ItemRepair itemRepair) {
 		this.itemRepairRepository.save(itemRepair);
 	}
 
