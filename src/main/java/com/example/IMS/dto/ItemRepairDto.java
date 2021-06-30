@@ -4,14 +4,14 @@ public class ItemRepairDto {
 	private long id;
 	private long itemId;
 	private long vendorId;
-	private int repairCost;
+	private double repairCost;
 	private double price;
 
 	public ItemRepairDto() {
 
 	}
 
-	public ItemRepairDto(long id, long itemId, long vendorId, int repairCost, double price) {
+	public ItemRepairDto(long id, long itemId, long vendorId, double repairCost, double price) {
 		super();
 		this.id = id;
 		this.itemId = itemId;
@@ -44,11 +44,11 @@ public class ItemRepairDto {
 		this.vendorId = vendorId;
 	}
 
-	public int getRepairCost() {
+	public double getRepairCost() {
 		return repairCost;
 	}
 
-	public void setRepairCost(int repairCost) {
+	public void setRepairCost(double repairCost) {
 		this.repairCost = repairCost;
 	}
 
