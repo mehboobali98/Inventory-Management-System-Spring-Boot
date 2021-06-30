@@ -17,16 +17,21 @@ public class ItemRepairConvertor {
 	private VendorService vendorService;
 
 	public ItemRepairDto modelToDto(ItemRepair item) {
-		long itemId = item.getItem().getId();
+		long itemId = 0;
+		if (item.getItem() != null) {
+			itemId = item.getItem().getId();
+		}
+		long itemRepairId = item.getId();
 		long vendorId = item.getVendor().getId();
 		double itemPrice = item.getPrice();
 		int repairCost = item.getCost();
-		ItemRepairDto itemRepairDto = new ItemRepairDto(itemId, vendorId, repairCost, itemPrice);
+		ItemRepairDto itemRepairDto = new ItemRepairDto(itemRepairId, itemId, vendorId, repairCost, itemPrice);
 		return itemRepairDto;
 	}
 
 	public ItemRepair DtoToModel(ItemRepairDto item) {
 		ItemRepair itemRepair = new ItemRepair();
+		itemRepair.setId(item.getId());
 		itemRepair.setCost(item.getRepairCost());
 		itemRepair.setPrice(item.getPrice());
 		itemRepair.setVendor(vendorService.getVendorById(item.getVendorId()));

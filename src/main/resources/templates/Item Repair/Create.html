@@ -28,22 +28,22 @@
 						<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
 						<li class="breadcrumb-item active">Item Repair</a></li>
 					</ol>
-					<form th:action="@{/createItemRepair}" th:object="${itemRepairDto}" method="post">
+					<form th:action="@{/ItemRepairCreate}" th:object="${itemRepairDto}" method="post">
 						<div class="form-group">
 							<label for="">Item Id:</label>
-							<input type="text" th:field = "*{item_id}" class="form-control" placeholder="Item ID">
+							<input type="text" th:field = "*{itemId}" class="form-control" placeholder="Item ID">
 						</div>
 						<div class="form-group">
 							<label for="">Vendor Id:</label>
-							<input type="text" th:field = "*{vendor_id}" class="form-control" placeholder="Vendor ID">
+							<input type="text" th:field = "*{vendorId}" class="form-control" placeholder="Vendor ID">
 						</div>
 						<div class="form-group">
-							<label for="">Item Cost:</label>
-							<input type="text" th:field = "*{price}" class="form-control" placeholder="Item Cost">
+							<label for="">Item Price:</label>
+							<input type="text" th:field = "*{price}" class="form-control" placeholder="Item Price">
 						</div>
 						<div class="form-group">
 							<label for="">Repair Cost:</label>
-							<input type="text" th:field = "*{repair_cost}" class="form-control" placeholder="Repair Cost">
+							<input type="text" th:field = "*{repairCost}" class="form-control" placeholder="Repair Cost">
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
