@@ -1,50 +1,53 @@
 package com.example.IMS.dto;
 
 public class ItemRepairDto {
-	private long item_id;
-	private int repair_cost;
-	private long vendor_id;
+	private long itemId;
+	private long vendorId;
+	private int repairCost;
 	private double price;
 
-	public ItemRepairDto(){	
+	public ItemRepairDto() {
+
 	}
-	
-	public ItemRepairDto(long id, int repair_cost, long vendor_id, double price) {
+
+	public ItemRepairDto(long itemId, long vendorId, int repairCost, double price) {
 		super();
-		this.item_id = id;
-		this.repair_cost = repair_cost;
+		this.itemId = itemId;
+		this.vendorId = vendorId;
+		this.repairCost = repairCost;
 		this.price = price;
-		this.vendor_id = vendor_id;
-	}
-	
-	
-	public long getItem_id() {
-		return item_id;
 	}
 
-	public void setItem_id(long item_id) {
-		this.item_id = item_id;
+	public long getItemId() {
+		return itemId;
 	}
 
-	public long getVendor_id() {
-		return vendor_id;
+	public void setItemId(long itemId) {
+		this.itemId = itemId;
 	}
 
-	public void setVendor_id(long vendor_id) {
-		this.vendor_id = vendor_id;
+	public long getVendorId() {
+		return vendorId;
 	}
 
-	public int getRepair_cost() {
-		return repair_cost;
+	public void setVendorId(long vendorId) {
+		this.vendorId = vendorId;
 	}
-	public void setRepair_cost(int repair_cost) {
-		this.repair_cost = repair_cost;
+
+	public int getRepairCost() {
+		return repairCost;
 	}
+
+	public void setRepairCost(int repairCost) {
+		this.repairCost = repairCost;
+	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 }
