@@ -20,6 +20,7 @@ public class Vendor {
 	
 	@Column(name = "vendor_email")
 	private String email;
+	
 
 	public long getId() {
 		return id;
