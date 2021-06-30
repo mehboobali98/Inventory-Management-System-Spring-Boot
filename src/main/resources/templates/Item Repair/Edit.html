@@ -32,21 +32,28 @@
 						<div class="form-group">
 							<input type="hidden" th:field = "*{id}" class="form-control">
 						</div>
-						<div class="form-group">
-							<label for="">Item Id:</label>
-							<input type="text" th:field = "*{itemId}" class="form-control">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
 						</div>
 						<div class="form-group">
-							<label for="">Vendor Id:</label>
-							<input type="text" th:field = "*{vendorId}" class="form-control">
+							<label for="">Item ID</label>
+							<input type="number" placeholder="Item ID" th:field = "*{itemId}" class="form-control" min="1">
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
 						</div>
 						<div class="form-group">
-							<label for="">Item Price:</label>
-							<input type="text" th:field = "*{price}" class="form-control">
+							<label for="">Vendor ID</label>
+							<input type="number" placeholder="Vendor ID" th:field = "*{vendorId}" class="form-control" min="1">
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('vendorId')}" th:errors="*{vendorId}"></div>
 						</div>
 						<div class="form-group">
-							<label for="">Repair Cost:</label>
-							<input type="text" th:field = "*{repairCost}" class="form-control">
+							<label for="">Item Price</label>
+							<input type="number" placeholder="Item Price" th:field = "*{price}" class="form-control" min="0" step="any">
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+						</div>
+						<div class="form-group">
+							<label for="">Repair Cost</label>
+							<input type="number" placeholder="Repair Cost" th:field = "*{repairCost}" class="form-control" min="0" step="any">
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('repairCost')}" th:errors="*{repairCost}"></div>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>

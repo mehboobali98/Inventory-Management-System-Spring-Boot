@@ -21,7 +21,7 @@ public class ItemRepair {
 	private long id;
 
 	@Column(name = "repair_cost")
-	private int cost;
+	private double cost;
 
 	@Column(name = "item_price")
 	private double price;
@@ -42,11 +42,11 @@ public class ItemRepair {
 		this.id = id;
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 

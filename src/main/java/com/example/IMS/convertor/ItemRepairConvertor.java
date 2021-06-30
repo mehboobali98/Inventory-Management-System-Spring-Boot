@@ -24,7 +24,7 @@ public class ItemRepairConvertor {
 		long itemRepairId = item.getId();
 		long vendorId = item.getVendor().getId();
 		double itemPrice = item.getPrice();
-		int repairCost = item.getCost();
+		double repairCost = item.getCost();
 		ItemRepairDto itemRepairDto = new ItemRepairDto(itemRepairId, itemId, vendorId, repairCost, itemPrice);
 		return itemRepairDto;
 	}
