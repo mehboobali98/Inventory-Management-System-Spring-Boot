@@ -32,6 +32,9 @@
 						<div class="form-group">
 							<input type="hidden" th:field = "*{id}" class="form-control">
 						</div>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+   							 <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>    
+						</div>
 						<div class="form-group">
 							<label for="">Item ID</label>
 							<input type="number" placeholder="Item ID" th:field = "*{itemId}" class="form-control" min="1">

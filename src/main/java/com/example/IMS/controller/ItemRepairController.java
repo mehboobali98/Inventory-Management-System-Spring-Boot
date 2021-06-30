@@ -1,8 +1,12 @@
 package com.example.IMS.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +16,18 @@ import com.example.IMS.convertor.ItemRepairConvertor;
 import com.example.IMS.dto.ItemRepairDto;
 import com.example.IMS.model.ItemRepair;
 import com.example.IMS.service.ItemRepairService;
+import com.example.IMS.service.ItemService;
+import com.example.IMS.service.VendorService;
 
 @Controller
 public class ItemRepairController {
 
 	@Autowired
 	private ItemRepairService itemRepairService;
+	@Autowired
+	private VendorService vendorService;
+	@Autowired
+	private ItemService itemService;
 	@Autowired
 	private ItemRepairConvertor itemRepairConvertor;
 
@@ -35,7 +45,20 @@ public class ItemRepairController {
 	}
 
 	@PostMapping("/ItemRepairCreate")
-	public String Create(@ModelAttribute("itemRepairDto") ItemRepairDto itemRepairDto) {
+	public String Create(@Valid @ModelAttribute("itemRepairDto") ItemRepairDto itemRepairDto, BindingResult result) {
+		String err = vendorService.validateVendorId(itemRepairDto.getVendorId());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		}
+		err = itemService.validateItemId(itemRepairDto.getItemId());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		}
+		if (result.hasErrors()) {
+			return "/Item Repair/Create";
+		}
 		itemRepairService.saveItemRepair(itemRepairConvertor.DtoToModel(itemRepairDto));
 		return "redirect:/ItemRepairView";
 
