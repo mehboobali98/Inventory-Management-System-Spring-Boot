@@ -30,7 +30,7 @@
 					</ol>
 					<form th:action="@{/ItemRepairCreate}" th:object="${itemRepairDto}" method="post">
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
-   							 <p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>    
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
 						</div>
 						<div class="form-group">
 							<label for="">Item ID</label>

@@ -33,9 +33,9 @@
 							<input type="hidden" th:field = "*{id}" class="form-control">
 						</div>
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
-   							 <p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>    
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
 						</div>
-<div class="form-group">
+						<div class="form-group">
 							<label for="">Item ID</label>
 							<input type="number" placeholder="Item ID" th:field = "*{itemId}" class="form-control" min="1">
 							<div class="alert alert-danger" th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
