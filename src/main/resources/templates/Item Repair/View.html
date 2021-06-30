@@ -23,7 +23,7 @@
 			<h1> Item Repair History</h1>
 			<hr>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+				<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
 				<li class="breadcrumb-item active">Item Repair History</a></li>
 			</ol>
 			<button style="font-size:20px" type="button" class="btn btn-outline-dark" id="myButton">Add new Item <i class="fa fa-plus"></i></button>
@@ -33,17 +33,23 @@
 				<thead class="thead-dark">
 					<tr>
 						<th>Item ID</th>
+						<th>Vendor ID</th>
 						<th>Purchase Price</th>
 						<th>Repair Cost</th>
-						<th>Vendor Name</th>
 						<th colspan = "2" style="text-align:center"> Options </th>
 					</tr>
 				</thead>
+				<tbody th:if="${#lists.isEmpty(ItemRepairDtoList)}">
+					<tr>
+						<td colspan="3" style="color: red;">No Data found</td>
+					</tr>
+				</tbody>
 				<tbody id="myTable">
-					<tr th:each="itemRepair : ${listItemRepair}">
-						<td th:text="${itemRepair.id}"></td>
-						<td th:text="${itemRepair.price}"></td>
-						<td th:text="${itemRepair.cost}"></td>
+					<tr th:each="itemRepairDto : ${ItemRepairDtoList}">
+						<td th:text="${itemRepairDto.itemId}"></td>
+						<td th:text="${itemRepairDto.vendorId}"></td>
+						<td th:text="${itemRepairDto.price}"></td>
+						<td th:text="${itemRepairDto.repairCost}"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -81,12 +87,12 @@
 		</script>
 		<script type="text/javascript">
 			document.getElementById("myButton").onclick = function() {
-				location.href = "@{}";
+				location.href = "ItemRepairCreate";
 			};
 		</script>
 		<script type="text/javascript">
 			document.getElementById("viewButton").onclick = function() {
-				location.href = "View particular Item.html";
+				location.href = "View particular Item";
 			};
 		</script>
 	</body>
