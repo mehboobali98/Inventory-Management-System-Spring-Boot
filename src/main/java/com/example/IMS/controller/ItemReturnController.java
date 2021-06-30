@@ -5,9 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ItemReturnController {
-	
-	 @GetMapping("/Item Return")
-	 public String issueHighPrecedence(){
-        return "/Item Return/Item Return Form";
- }
+	 @GetMapping("/ItemReturnCreate")
+	 public String Create(){
+        return "/Item Return/Create";
+	 }
+	 
+	 @GetMapping("/ItemReturnViewAll")
+	 public String Index()
+	 {
+		 return "/Item Return/View";
+	 }
 }
+

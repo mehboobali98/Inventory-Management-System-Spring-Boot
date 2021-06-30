@@ -51,7 +51,6 @@ public class Item {
 	@JoinColumn(name = "item_type_fk")
 	private ItemType itemType;
 	
-	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendor_id_fk")
 	private Vendor vendor;
