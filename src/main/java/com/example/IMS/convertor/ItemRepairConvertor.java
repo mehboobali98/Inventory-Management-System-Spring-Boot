@@ -1,26 +1,53 @@
 package com.example.IMS.convertor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.IMS.dto.ItemRepairDto;
 import com.example.IMS.model.ItemRepair;
+import com.example.IMS.service.VendorService;
 
 @Component
 public class ItemRepairConvertor {
 
+	@Autowired
+	private VendorService vendorService;
+
 	public ItemRepairDto modelToDto(ItemRepair item) {
-		ItemRepairDto itemRepairDto = new ItemRepairDto();
-		itemRepairDto.setItem_id(item.getItem().getId());
-		itemRepairDto.setPrice(item.getPrice());
-		itemRepairDto.setRepair_cost(item.getCost());
-		itemRepairDto.setVendor_id(item.getVendor().getId());
+		long itemId = item.getItem().getId();
+		long vendorId = item.getVendor().getId();
+		double itemPrice = item.getPrice();
+		int repairCost = item.getCost();
+		ItemRepairDto itemRepairDto = new ItemRepairDto(itemId, vendorId, repairCost, itemPrice);
 		return itemRepairDto;
 	}
 
 	public ItemRepair DtoToModel(ItemRepairDto item) {
 		ItemRepair itemRepair = new ItemRepair();
-		itemRepair.setCost(item.getRepair_cost());
+		itemRepair.setCost(item.getRepairCost());
 		itemRepair.setPrice(item.getPrice());
+		itemRepair.setVendor(vendorService.getVendorById(item.getVendorId()));
 		return itemRepair;
+	}
+
+	public List<ItemRepairDto> modelToDto(List<ItemRepair> item) {
+		List<ItemRepairDto> DtoList = new ArrayList<>();
+		int size = item.size();
+		for (int i = 0; i < size; i++) {
+			DtoList.add(modelToDto(item.get(i)));
+		}
+		return DtoList;
+	}
+
+	public List<ItemRepair> DtoToModel(List<ItemRepairDto> item) {
+		List<ItemRepair> itemList = new ArrayList<>();
+		int size = item.size();
+		for (int i = 0; i < size; i++) {
+			itemList.add(DtoToModel(item.get(i)));
+		}
+		return itemList;
 	}
 }
