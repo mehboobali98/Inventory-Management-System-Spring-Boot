@@ -14,22 +14,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "item_repair")
 public class ItemRepair {
-	
+
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "repair_id")
 	private long id;
-	
+
 	@Column(name = "repair_cost")
 	private int cost;
-	
+
 	@Column(name = "item_price")
 	private double price;
-	
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id_fk")
 	private Item item;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendor_id_fk")
 	private Vendor vendor;

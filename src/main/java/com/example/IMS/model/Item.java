@@ -15,42 +15,41 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "Inventory_item")
 public class Item {
-	
+
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "item_id")
 	private long id;
-	
+
 	@Column(name = "item_quantity")
 	private int quantity;
-	
+
 	@Column(name = "item_price")
 	private double price;
-	
+
 	@Column(name = "item_fine_rate")
 	private double fineRate;
-	
+
 	@Column(name = "item_name")
 	private String name;
-	
+
 	@Column(name = "item_invoice_number")
 	private String invoiceNumber;
-	
+
 	@Column(name = "item_status")
 	private String itemStatus;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "item_id_fk", referencedColumnName = "item_id")
 	private List<Loan> loan = new ArrayList<>();
-	
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_type_fk")
 	private ItemType itemType;
-	
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendor_id_fk")
 	private Vendor vendor;
@@ -134,7 +133,5 @@ public class Item {
 	public void setLoan(List<Loan> loan) {
 		this.loan = loan;
 	}
-	
-	
-	
+
 }

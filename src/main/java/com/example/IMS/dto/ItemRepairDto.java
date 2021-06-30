@@ -6,10 +6,9 @@ public class ItemRepairDto {
 	private long vendorId;
 	private int repairCost;
 	private double price;
-	
-	public ItemRepairDto()
-	{
-		
+
+	public ItemRepairDto() {
+
 	}
 
 	public ItemRepairDto(long id, long itemId, long vendorId, int repairCost, double price) {
