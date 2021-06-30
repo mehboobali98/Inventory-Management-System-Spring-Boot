@@ -41,8 +41,10 @@ public class ItemRepairController {
 
 	}
 
-	@GetMapping("/ItemRepairEdit")
-	public String Edit() {
+	@GetMapping("/ItemRepairEdit/{id}")
+	public String Edit(@PathVariable (value = "id") long id, Model model) {
+		ItemRepair itemRepair = itemRepairService.findItemRepairById(id);
+		model.addAttribute("itemRepairDto", itemRepairConvertor.modelToDto(itemRepair));
 		return "/Item Repair/Edit";
 	}
 

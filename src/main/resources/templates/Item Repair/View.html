@@ -52,7 +52,7 @@
 						<td th:text="${itemRepairDto.vendorId}"></td>
 						<td th:text="${itemRepairDto.price}"></td>
 						<td th:text="${itemRepairDto.repairCost}"></td>
-						<td> <a th:href="@{/}" class="btn btn-primary"> Edit </a></td>
+						<td> <a th:href="@{/ItemRepairEdit/{id}(id=${itemRepairDto.id})}" class="btn btn-primary"> Edit </a></td>
 						<td> <a th:href="@{/ItemRepairDelete/{id}(id=${itemRepairDto.id})}" class="btn btn-danger"> Delete </a>
 						</td>
 					</tr>
