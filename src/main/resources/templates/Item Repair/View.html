@@ -32,6 +32,7 @@
 			<table class="table table-bordered table-hover">
 				<thead class="thead-dark">
 					<tr>
+						<th>Repair ID</th>
 						<th>Item ID</th>
 						<th>Vendor ID</th>
 						<th>Purchase Price</th>
@@ -46,10 +47,14 @@
 				</tbody>
 				<tbody id="myTable">
 					<tr th:each="itemRepairDto : ${ItemRepairDtoList}">
+						<td th:text="${itemRepairDto.id}"></td>
 						<td th:text="${itemRepairDto.itemId}"></td>
 						<td th:text="${itemRepairDto.vendorId}"></td>
 						<td th:text="${itemRepairDto.price}"></td>
 						<td th:text="${itemRepairDto.repairCost}"></td>
+						<td> <a href="#" class="btn btn-primary"> Edit </a></td>
+						<td> <a href="#" class="btn btn-danger"> Delete </a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
