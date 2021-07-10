@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<!-- Form starts from here -->
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+											<!-- Form Name -->
+					<legend>
+						<h2><b>Issue High Precedence Item</b></h2>
+					</legend>
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+						<li class="breadcrumb-item active">Item Issuance</li>
+						<li class="breadcrumb-item active">High Precedence Item</li>
+					</ol>
+					<form class="needs-validation" th:action="@{/ItemIssuanceCreate}" id="contact_form" th:object="${itemIssuanceDto}" method = "post" novalidate>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Item ID</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="Item ID" placeholder="Item ID" th:field = "*{itemId}" class="form-control" type="number"> 
+								</div>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Borrower ID</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="Borrower ID" placeholder="Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number"> 
+								</div>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Fine Amount</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="fineAmount" placeholder="Enter Fine Amount" th:field = "*{fineAmount}"class="form-control" type="number"> 
+								</div>
+							</div>
+						</div>
+						<!-- Select Basic -->
+						<!-- Button -->
+						<div class="form-group">
+							<label class="col-md-4 control-label"></label>
+							<div class="col-md-4">
+								<br>
+								<button id="enter_bid" type="submit" class="btn btn-success">Issue Item</button>
+								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Cancel</button>
+							</div>
+						</div>
+					</form>
+					<!-- The Modal -->
+					<div class="modal fade" id="myModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Warning!</h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<!-- Modal body -->
+								<div class="modal-body"> Are you sure you want to cancel? All your changes will be lost. </div>
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+									<button id="continue" type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div></div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<div th:replace="footer :: myFooter"></div>
+	</body>
+</html>
