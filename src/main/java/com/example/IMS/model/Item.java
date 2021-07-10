@@ -134,4 +134,8 @@ public class Item {
 		this.loan = loan;
 	}
 
+	public void addLoan(Loan newLoan) {
+		this.loan.add(newLoan);
+	}
+
 }
