@@ -1,20 +1,20 @@
 package com.example.IMS.dto;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class ItemIssuanceDto {
 	private long id;
 	private long itemId;
 	private long borrowerId;
 	private double fineAmount;
-	private Timestamp issueDate;
-	private Timestamp dueDate;
+	private Date issueDate;
+	private Date dueDate;
 
 	public ItemIssuanceDto() {
 	}
 
-	public ItemIssuanceDto(long id, long itemId, long borrowerId, double fineAmount, Timestamp issueDate,
-			Timestamp dueDate) {
+	public ItemIssuanceDto(long id, long itemId, long borrowerId, double fineAmount, Date issueDate,
+			Date dueDate) {
 		super();
 		this.id = id;
 		this.itemId = itemId;
@@ -56,19 +56,19 @@ public class ItemIssuanceDto {
 		this.fineAmount = fineAmount;
 	}
 
-	public Timestamp getIssueDate() {
+	public Date getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(Timestamp issueDate) {
+	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
 
-	public Timestamp getDueDate() {
+	public Date getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Timestamp dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 
