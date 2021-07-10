@@ -2,12 +2,18 @@ package com.example.IMS.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ItemIssuanceDto {
 	private long id;
 	private long itemId;
 	private long borrowerId;
 	private double fineAmount;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date issueDate;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dueDate;
 
 	public ItemIssuanceDto() {
