@@ -5,16 +5,18 @@ public class ItemIssuanceDto {
 	private long itemId;
 	private long borrowerId;
 	private long loanDuration;
+	private long fineAmount;
 
 	public ItemIssuanceDto() {
 	}
 
-	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration) {
+	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration, long fineAmount) {
 		super();
 		this.id = id;
 		this.itemId = itemId;
 		this.borrowerId = borrowerId;
 		this.loanDuration = loanDuration;
+		this.fineAmount = fineAmount;
 	}
 
 	public long getId() {
@@ -47,6 +49,14 @@ public class ItemIssuanceDto {
 
 	public void setLoanDuration(long loanDuration) {
 		this.loanDuration = loanDuration;
+	}
+
+	public long getFineAmount() {
+		return fineAmount;
+	}
+
+	public void setFineAmount(long fineAmount) {
+		this.fineAmount = fineAmount;
 	}
 
 }
