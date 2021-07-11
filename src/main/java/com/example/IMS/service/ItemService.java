@@ -37,10 +37,12 @@ public class ItemService implements IItemService {
 		return errorMessage;
 	}
 
+	@Override
 	public List<Item> getAllItems() {
 		return itemRepository.findAll();
 	}
 
+	@Override
 	public long findItemIdByLoanId(long loanId) {
 		List<Item> itemList = getAllItems();
 		List<Loan> loanList;

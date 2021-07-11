@@ -1,5 +1,7 @@
 package com.example.IMS.service;
 
+import java.util.List;
+
 import com.example.IMS.model.Item;
 
 public interface IItemService {
@@ -8,4 +10,6 @@ public interface IItemService {
 	String validateItemId(long id);
 
 	long findItemIdByLoanId(long loanId);
+
+	List<Item> getAllItems();
 }
