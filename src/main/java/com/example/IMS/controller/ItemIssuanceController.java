@@ -60,6 +60,13 @@ public class ItemIssuanceController {
 		itemIssuanceService.saveItemRepair(loan);
 		return "redirect:/ItemIssuanceView";
 	}
+	
+	@GetMapping("/ItemIssuanceEdit/{id}")
+	public String Edit(@PathVariable(value = "id") long id, Model model) {
+		Loan loan = itemIssuanceService.findItemIssuedById(id);
+		model.addAttribute("itemIssuanceDto", itemIssuanceConvertor.modelToDto(loan));
+		return "/Item Issuance/Edit";
+	}
 
 	@GetMapping("/ItemIssuanceDelete/{id}")
 	public String Delete(@PathVariable(value = "id") long id, Model model) {

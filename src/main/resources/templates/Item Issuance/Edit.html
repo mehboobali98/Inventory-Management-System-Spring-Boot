@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<!-- Form starts from here -->
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+					<h2>Item Issuance Edit Form</h2>
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+						<li class="breadcrumb-item active">Item Issuance Edit</li>
+					</ol>
+					<form th:action="@{/ItemIssuanceCreate}" th:object="${itemIssuanceDto}" method="post">
+						<div class="form-group">
+							<input type="hidden" th:field = "*{id}" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Item ID</label>
+							<input type="number" placeholder="Item ID" th:field = "*{itemId}" class="form-control" min="1">
+						</div>
+						<div class="form-group">
+							<label for="">Borrower ID</label>
+							<input type="number" placeholder="Borrower ID" th:field = "*{borrowerId}" class="form-control" min="1">
+						</div>
+						<div class="form-group">
+							<label for="">Loan Duration</label>
+							<input type="number" placeholder="Loan Duration" th:field = "*{loanDuration}" class="form-control" min="1">
+						</div>
+						<div class="form-group">
+							<label for="">Fine Amount</label>
+							<input type="number" placeholder="Fine Amount" th:field = "*{fineAmount}" class="form-control" min="0" step="any">
+						</div>
+						<div class="form-group">
+							<label for="">Issue Date</label>
+							<input type="text" placeholder="Issue Date" th:field = "*{issueDate}" class="form-control" readonly>
+						</div>
+						<div class="form-group">
+							<label for="">Due Date</label>
+							<input type="text" placeholder="Due Date" th:field = "*{dueDate}" class="form-control" readonly>
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Form ends here -->
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<div th:replace="footer :: myFooter"></div>
+	</body>
+</html>

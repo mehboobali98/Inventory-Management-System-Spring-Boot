@@ -35,6 +35,7 @@ public class ItemIssuanceConvertor {
 
 	public Loan dtoToModel(ItemIssuanceDto dto) {
 		Loan loan = new Loan();
+		loan.setId(dto.getId());
 		loan.setLoanDuration(dto.getLoanDuration());
 		loan.setIssueDate(Helper.getCurrentTime());
 		return loan;
