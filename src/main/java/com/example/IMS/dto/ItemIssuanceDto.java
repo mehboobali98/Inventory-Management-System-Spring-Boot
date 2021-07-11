@@ -1,33 +1,20 @@
 package com.example.IMS.dto;
 
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class ItemIssuanceDto {
 	private long id;
 	private long itemId;
 	private long borrowerId;
-	private double fineAmount;
-	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date issueDate;
-	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date dueDate;
+	private long loanDuration;
 
 	public ItemIssuanceDto() {
 	}
 
-	public ItemIssuanceDto(long id, long itemId, long borrowerId, double fineAmount, Date issueDate,
-			Date dueDate) {
+	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration) {
 		super();
 		this.id = id;
 		this.itemId = itemId;
 		this.borrowerId = borrowerId;
-		this.fineAmount = fineAmount;
-		this.issueDate = issueDate;
-		this.dueDate = dueDate;
+		this.loanDuration = loanDuration;
 	}
 
 	public long getId() {
@@ -54,28 +41,12 @@ public class ItemIssuanceDto {
 		this.borrowerId = borrowerId;
 	}
 
-	public double getFineAmount() {
-		return fineAmount;
+	public long getLoanDuration() {
+		return loanDuration;
 	}
 
-	public void setFineAmount(double fineAmount) {
-		this.fineAmount = fineAmount;
-	}
-
-	public Date getIssueDate() {
-		return issueDate;
-	}
-
-	public void setIssueDate(Date issueDate) {
-		this.issueDate = issueDate;
-	}
-
-	public Date getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
+	public void setLoanDuration(long loanDuration) {
+		this.loanDuration = loanDuration;
 	}
 
 }
