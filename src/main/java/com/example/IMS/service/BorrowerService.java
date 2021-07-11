@@ -55,4 +55,14 @@ public class BorrowerService implements IBorrowerService {
 		return borrowerId;
 	}
 
+	@Override
+	public String validateBorrowerId(long borrowerId) {
+		String errorMessage = "";
+		Borrower borrower = getBorrowerById(borrowerId);
+		if (borrower == null) {
+			errorMessage = "Borrower ID does not exist";
+		}
+		return errorMessage;
+	}
+
 }
