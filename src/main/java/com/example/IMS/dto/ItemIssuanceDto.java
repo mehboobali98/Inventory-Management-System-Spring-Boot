@@ -10,6 +10,15 @@ public class ItemIssuanceDto {
 	public ItemIssuanceDto() {
 	}
 
+	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration) {
+		super();
+		this.id = id;
+		this.itemId = itemId;
+		this.borrowerId = borrowerId;
+		this.loanDuration = loanDuration;
+		this.fineAmount = 0;
+	}
+	
 	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration, long fineAmount) {
 		super();
 		this.id = id;
