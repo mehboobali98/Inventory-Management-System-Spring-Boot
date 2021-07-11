@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+					<h1> Item Issuance History</h1>
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+						<li class="breadcrumb-item active">Item Issuance History</li>
+					</ol>
+					<button style="font-size:20px" type="button" class="btn btn-outline-dark" id="myButton">Issue An Item <i class="fa fa-plus"></i></button>
+					<br>
+					<br>
+					<table class="table table-bordered table-hover">
+						<thead class="thead-dark">
+							<tr>
+								<th>Item Issuance ID</th>
+								<th>Item ID</th>
+								<th>Borrower ID</th>
+								<th>Loan Duration</th>
+								<th>Issue Date</th>
+								<th>Due Date </th>
+								<th>Fine Amount </th>
+								<th colspan = "2" style="text-align:center"> Options </th>
+							</tr>
+						</thead>
+						<tbody th:if="${#lists.isEmpty(ItemIssuanceDtoList)}">
+							<tr>
+								<td colspan="3" style="color: red;">No Data found</td>
+							</tr>
+						</tbody>
+						<tbody id="myTable">
+							<tr th:each="itemIssuanceDto : ${ItemIssuanceDtoList}">
+								<td th:text="${itemIssuanceDto.id}"></td>
+								<td th:text="${itemIssuanceDto.itemId}"></td>
+								<td th:text="${itemIssuanceDto.borrowerId}"></td>
+								<td th:text="${itemIssuanceDto.loanDuration}"></td>
+								<td th:text="${itemIssuanceDto.issueDate}"></td>
+								<td th:text="${itemIssuanceDto.dueDate}"></td>
+								<td th:text="${itemIssuanceDto.fineAmount}"></td>
+								<td> <a th:href="@{/ItemIssuanceEdit/{id}(id=${itemIssuanceDto.id})}" class="btn btn-primary"> Edit </a></td>
+								<td> <a th:href="@{/ItemIssuanceDelete/{id}(id=${itemIssuanceDto.id})}" class="btn btn-danger"> Delete </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<script type="text/javascript">
+					document.getElementById("myButton").onclick = function() {
+						location.href = "ItemIssuanceCreate";
+					};
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

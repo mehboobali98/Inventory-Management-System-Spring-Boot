@@ -1,7 +1,5 @@
 package com.example.IMS.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,19 +11,19 @@ import javax.persistence.Table;
 @Table(name = "Loan")
 public class Loan {
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "loan_id")
 	private long id;
-	
+
+	@Column(name = "loan_duration")
+	private long loanDuration;
+
 	@Column(name = "issue_date")
-	private Timestamp issueDate;
-	
-	@Column(name = "due_date")
-	private Timestamp dueDate;
-	
-	@Column(name = "type_name")
-	private String typeName;
-	
+	private String issueDate;
+
+	@Column(name = "fine_amount")
+	private double fineAmount;
+
 	public long getId() {
 		return id;
 	}
@@ -34,30 +32,28 @@ public class Loan {
 		this.id = id;
 	}
 
-	public Timestamp getIssueDate() {
+	public String getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(Timestamp issueDate) {
+	public void setIssueDate(String issueDate) {
 		this.issueDate = issueDate;
 	}
 
-	public Timestamp getDueDate() {
-		return dueDate;
+	public double getFineAmount() {
+		return fineAmount;
 	}
 
-	public void setDueDate(Timestamp dueDate) {
-		this.dueDate = dueDate;
+	public void setFineAmount(double fineAmount) {
+		this.fineAmount = fineAmount;
 	}
 
-	public String getTypeName() {
-		return typeName;
+	public long getLoanDuration() {
+		return loanDuration;
 	}
 
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
+	public void setLoanDuration(long loanDuration) {
+		this.loanDuration = loanDuration;
 	}
-	
-	
-	
+
 }
