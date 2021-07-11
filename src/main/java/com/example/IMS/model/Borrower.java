@@ -32,7 +32,7 @@ public class Borrower {
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "borrower_id_fk", referencedColumnName = "borrower_id")
 	private List<Loan> loan = new ArrayList<>();
 

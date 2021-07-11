@@ -42,7 +42,7 @@ public class Item {
 	@Column(name = "item_status")
 	private String itemStatus;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "item_id_fk", referencedColumnName = "item_id")
 	private List<Loan> loan = new ArrayList<>();
 
