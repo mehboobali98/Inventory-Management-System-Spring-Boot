@@ -23,13 +23,12 @@
 					<hr>
 											<!-- Form Name -->
 					<legend>
-						<h2><b>Issue High Precedence Item</b></h2>
+						<h2><b>Issue Item</b></h2>
 					</legend>
 					<hr>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
 						<li class="breadcrumb-item active">Item Issuance</li>
-						<li class="breadcrumb-item active">High Precedence Item</li>
 					</ol>
 					<form class="needs-validation" th:action="@{/ItemIssuanceCreate}" id="contact_form" th:object="${itemIssuanceDto}" method = "post" novalidate>
 						<!-- Text input-->
@@ -52,10 +51,10 @@
 						</div>
 						<!-- Text input-->
 						<div class="form-group">
-							<label class="col-md-4 control-label">Fine Amount</label>
+							<label class="col-md-4 control-label">Loan Duration</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="fineAmount" placeholder="Enter Fine Amount" th:field = "*{fineAmount}"class="form-control" type="number"> 
+									<input name="loanDuration" placeholder="Enter Loan Duration" th:field = "*{loanDuration}"class="form-control" type="number"> 
 								</div>
 							</div>
 						</div>
