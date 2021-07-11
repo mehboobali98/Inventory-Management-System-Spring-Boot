@@ -6,4 +6,6 @@ public interface IItemService {
 	Item getItemById(long id);
 
 	String validateItemId(long id);
+
+	long findItemIdByLoanId(long loanId);
 }

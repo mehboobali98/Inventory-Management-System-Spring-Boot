@@ -1,11 +1,13 @@
 package com.example.IMS.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.IMS.model.Item;
+import com.example.IMS.model.Loan;
 import com.example.IMS.repository.IItemRepository;
 
 @Service
@@ -33,6 +35,31 @@ public class ItemService implements IItemService {
 			errorMessage = "Item ID does not exist";
 		}
 		return errorMessage;
+	}
+
+	public List<Item> getAllItems() {
+		return itemRepository.findAll();
+	}
+
+	public long findItemIdByLoanId(long loanId) {
+		List<Item> itemList = getAllItems();
+		List<Loan> loanList;
+		boolean found = false;
+		long itemId = -1;
+		for (Item item : itemList) {
+			loanList = item.getLoan();
+			for (Loan loan : loanList) {
+				if (loan.getId() == loanId) {
+					itemId = item.getId();
+					found = true;
+					break;
+				}
+			}
+			if (found) {
+				break;
+			}
+		}
+		return itemId;
 	}
 
 }
