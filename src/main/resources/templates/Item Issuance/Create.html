@@ -31,12 +31,16 @@
 					</ol>
 					<form class="needs-validation" th:action="@{/ItemIssuanceCreate}" id="contact_form" th:object="${itemIssuanceDto}" method = "post" novalidate>
 						<!-- Text input-->
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
+						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label">Item ID</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="Item ID" placeholder="Item ID" th:field = "*{itemId}" class="form-control" type="number"> 
+									<input name="Item ID" placeholder="Item ID" th:field = "*{itemId}" class="form-control" type="number" min="1" th:required="required">
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
 							</div>
 						</div>
 						<!-- Text input-->
@@ -44,8 +48,9 @@
 							<label class="col-md-4 control-label">Borrower ID</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="Borrower ID" placeholder="Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number"> 
+									<input name="Borrower ID" placeholder="Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number" min="1" th:required="required">
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('borrowerId')}" th:errors="*{borrowerId}"></div>
 							</div>
 						</div>
 						<!-- Text input-->
@@ -53,8 +58,9 @@
 							<label class="col-md-4 control-label">Loan Duration</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="loanDuration" placeholder="Enter Loan Duration" th:field = "*{loanDuration}"class="form-control" type="number"> 
+									<input name="loanDuration" placeholder="Enter Loan Duration" th:field = "*{loanDuration}"class="form-control" type="number" min="1" th:required="required">
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('loanDuration')}" th:errors="*{loanDuration}"></div> 
 							</div>
 						</div>
 						<!-- Select Basic -->
@@ -80,8 +86,8 @@
 								<div class="modal-body"> Are you sure you want to cancel? All your changes will be lost. </div>
 								<!-- Modal footer -->
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-									<button id="continue" type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+									<button id="continue" type="button" class="btn btn-danger" data-dismiss="modal">Continue</button>
 								</div>
 							</div>
 						</div>

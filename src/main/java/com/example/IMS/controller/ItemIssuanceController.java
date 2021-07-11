@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,15 +53,32 @@ public class ItemIssuanceController {
 	@PostMapping("/ItemIssuanceCreate")
 	public String Create(@Valid @ModelAttribute("itemIssuanceDto") ItemIssuanceDto itemIssuanceDto,
 			BindingResult result) {
-		Borrower borrower = borrowerService.getBorrowerById(itemIssuanceDto.getBorrowerId());
-		Item item = itemService.getItemById(itemIssuanceDto.getItemId());
+		Borrower borrower = null;
+		Item item = null;
+		String err = borrowerService.validateBorrowerId(itemIssuanceDto.getBorrowerId());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		} else {
+			borrower = borrowerService.getBorrowerById(itemIssuanceDto.getBorrowerId());
+		}
+		err = itemService.validateItemId(itemIssuanceDto.getItemId());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		} else {
+			item = itemService.getItemById(itemIssuanceDto.getItemId());
+		}
+		if (result.hasErrors()) {
+			return "/Item Issuance/Create";
+		}
 		Loan loan = itemIssuanceConvertor.dtoToModel(itemIssuanceDto);
 		borrower.addLoan(loan);
 		item.addLoan(loan);
 		itemIssuanceService.saveItemRepair(loan);
 		return "redirect:/ItemIssuanceView";
 	}
-	
+
 	@GetMapping("/ItemIssuanceEdit/{id}")
 	public String Edit(@PathVariable(value = "id") long id, Model model) {
 		Loan loan = itemIssuanceService.findItemIssuedById(id);
