@@ -5,7 +5,9 @@ public class ItemIssuanceDto {
 	private long itemId;
 	private long borrowerId;
 	private long loanDuration;
-	private long fineAmount;
+	private double fineAmount;
+	private String issueDate;
+	private String dueDate;
 
 	public ItemIssuanceDto() {
 	}
@@ -18,8 +20,8 @@ public class ItemIssuanceDto {
 		this.loanDuration = loanDuration;
 		this.fineAmount = 0;
 	}
-	
-	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration, long fineAmount) {
+
+	public ItemIssuanceDto(long id, long itemId, long borrowerId, long loanDuration, double fineAmount) {
 		super();
 		this.id = id;
 		this.itemId = itemId;
@@ -60,12 +62,28 @@ public class ItemIssuanceDto {
 		this.loanDuration = loanDuration;
 	}
 
-	public long getFineAmount() {
+	public double getFineAmount() {
 		return fineAmount;
 	}
 
-	public void setFineAmount(long fineAmount) {
+	public void setFineAmount(double fineAmount) {
 		this.fineAmount = fineAmount;
+	}
+
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 
 }
