@@ -15,11 +15,11 @@ public class Loan {
 	@Column(name = "loan_id")
 	private long id;
 
+	@Column(name = "loan_duration")
+	private long loanDuration;
+
 	@Column(name = "issue_date")
 	private String issueDate;
-
-	@Column(name = "due_date")
-	private String dueDate;
 
 	@Column(name = "fine_amount")
 	private double fineAmount;
@@ -40,20 +40,20 @@ public class Loan {
 		this.issueDate = issueDate;
 	}
 
-	public String getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(String dueDate) {
-		this.dueDate = dueDate;
-	}
-
 	public double getFineAmount() {
 		return fineAmount;
 	}
 
 	public void setFineAmount(double fineAmount) {
 		this.fineAmount = fineAmount;
+	}
+
+	public long getLoanDuration() {
+		return loanDuration;
+	}
+
+	public void setLoanDuration(long loanDuration) {
+		this.loanDuration = loanDuration;
 	}
 
 }
