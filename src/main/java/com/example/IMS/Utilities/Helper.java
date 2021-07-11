@@ -19,7 +19,7 @@ public class Helper {
 		return dateFormat.format(cal.getTime());
 	}
 
-	public static String getDueDate(String issueDate, int loanPeriod) {
+	public static String getDueDate(String issueDate, long l) {
 		Calendar cal = Calendar.getInstance();
 		try {
 			cal.setTime(dateFormat.parse(issueDate));
@@ -27,7 +27,7 @@ public class Helper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		cal.add(Calendar.DATE, loanPeriod);
+		cal.add(Calendar.DATE, (int) l);
 		return convertDateToString(cal.getTime());
 	}
 
