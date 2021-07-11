@@ -8,4 +8,8 @@ public interface IItemIssuanceService {
 	void saveItemRepair(Loan loan);
 
 	List<Loan> getAllIssuedItems();
+
+	void deleteIssuedItemById(long id);
+
+	Loan findItemIssuedById(long id);
 }

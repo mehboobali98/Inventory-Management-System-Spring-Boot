@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.IMS.convertor.ItemIssuanceConvertor;
@@ -57,6 +58,20 @@ public class ItemIssuanceController {
 		borrower.addLoan(loan);
 		item.addLoan(loan);
 		itemIssuanceService.saveItemRepair(loan);
+		return "redirect:/ItemIssuanceView";
+	}
+
+	@GetMapping("/ItemIssuanceDelete/{id}")
+	public String Delete(@PathVariable(value = "id") long id, Model model) {
+		Loan loan = itemIssuanceService.findItemIssuedById(id);
+		model.addAttribute("itemIssuanceDto", itemIssuanceConvertor.modelToDto(loan));
+		return "/Item Issuance/Delete";
+	}
+
+	@PostMapping("/ItemIssuanceDelete/{id}")
+	public String Delete(@PathVariable(value = "id") long id,
+			@ModelAttribute("itemIssuanceDto") ItemIssuanceDto itemIssuanceDto) {
+		itemIssuanceService.deleteIssuedItemById(id);
 		return "redirect:/ItemIssuanceView";
 	}
 
