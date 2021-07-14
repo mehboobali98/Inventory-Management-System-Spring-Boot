@@ -39,11 +39,8 @@ public class Item {
 	@Column(name = "item_invoice_number")
 	private String invoiceNumber;
 
-	@Column(name = "item_status")
-	private String itemStatus;
-
-	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
-	@JoinColumn(name = "item_id_fk", referencedColumnName = "item_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+	// @JoinColumn(name = "item_id_fk", referencedColumnName = "item_id")
 	private List<Loan> loan = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -102,14 +99,6 @@ public class Item {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public String getItemStatus() {
-		return itemStatus;
-	}
-
-	public void setItemStatus(String itemStatus) {
-		this.itemStatus = itemStatus;
-	}
-
 	public ItemType getItemType() {
 		return itemType;
 	}
@@ -136,6 +125,12 @@ public class Item {
 
 	public void addLoan(Loan newLoan) {
 		this.loan.add(newLoan);
+		newLoan.setItem(this);
+	}
+
+	public void removeLoan(Loan newLoan) {
+		this.loan.remove(newLoan);
+		newLoan.setBorrower(null);
 	}
 
 }

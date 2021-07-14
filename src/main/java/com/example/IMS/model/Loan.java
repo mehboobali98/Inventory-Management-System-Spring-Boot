@@ -1,11 +1,18 @@
 package com.example.IMS.model;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.example.IMS.Utilities.Helper;
 
 @Entity
 @Table(name = "Loan")
@@ -13,7 +20,7 @@ public class Loan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "loan_id")
-	private long id;
+	private Long id;
 
 	@Column(name = "loan_duration")
 	private long loanDuration;
@@ -21,8 +28,17 @@ public class Loan {
 	@Column(name = "issue_date")
 	private String issueDate;
 
-	@Column(name = "fine_amount")
-	private double fineAmount;
+	@Column(name = "return_date")
+	private String returnDate;
+
+	@Column(name = "total_fine")
+	private double totalFine;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Item item;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Borrower borrower;
 
 	public long getId() {
 		return id;
@@ -30,6 +46,30 @@ public class Loan {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(String returnDate) {
+		this.returnDate = returnDate;
+	}
+
+	public double getTotalFine() {
+		return totalFine;
+	}
+
+	public void setTotalFine(double totalFine) {
+		this.totalFine = totalFine;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public Borrower getBorrower() {
+		return borrower;
 	}
 
 	public String getIssueDate() {
@@ -40,20 +80,51 @@ public class Loan {
 		this.issueDate = issueDate;
 	}
 
-	public double getFineAmount() {
-		return fineAmount;
-	}
-
-	public void setFineAmount(double fineAmount) {
-		this.fineAmount = fineAmount;
-	}
-
 	public long getLoanDuration() {
 		return loanDuration;
 	}
 
 	public void setLoanDuration(long loanDuration) {
 		this.loanDuration = loanDuration;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+
+	}
+
+	public void setBorrower(Borrower borrower) {
+		this.borrower = borrower;
+	}
+
+	public double calculateFine() {
+		double _totalFine = 0;
+		if (!returnDate.isEmpty()) {
+			Date _issueDate = Helper.convertStringToDate(issueDate);
+			Date _returnDate = Helper.convertStringToDate(returnDate);
+			long daysBetween = ChronoUnit.DAYS.between(_issueDate.toInstant(), _returnDate.toInstant());
+			if (daysBetween > 0) {
+				_totalFine = daysBetween * Helper.fineRate;
+			} else {
+				_totalFine = 0;
+			}
+		}
+		totalFine = _totalFine;
+		return _totalFine;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Loan))
+			return false;
+		return id != null && id.equals(((Loan) o).getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
 	}
 
 }
