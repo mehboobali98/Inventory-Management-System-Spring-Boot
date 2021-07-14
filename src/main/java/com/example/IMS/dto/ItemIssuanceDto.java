@@ -23,7 +23,7 @@ public class ItemIssuanceDto {
 	private long loanDuration;
 
 	@NotNull(message = "Fine Amount is mandatory")
-	@Min(value = 1, message = "Fine Amount must be greater than 0")
+	@Min(value = 0, message = "Fine Amount must be greater than 0")
 	@Max(value = (long) Double.MAX_VALUE, message = "Fine Amount must be lesser than " + Double.MAX_VALUE)
 	private double fineAmount;
 	private String issueDate;
