@@ -21,6 +21,7 @@ public class ItemIssuanceConvertor {
 		dto.setFineAmount(loan.calculateFine());
 		dto.setItemId(loan.getItem().getId());
 		dto.setBorrowerId(loan.getBorrower().getId());
+		dto.setFineAmount(loan.getTotalFine());
 		return dto;
 	}
 
