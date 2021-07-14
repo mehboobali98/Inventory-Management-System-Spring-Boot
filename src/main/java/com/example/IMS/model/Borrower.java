@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,8 +30,7 @@ public class Borrower {
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
-	@JoinColumn(name = "borrower_id_fk", referencedColumnName = "borrower_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "borrower", orphanRemoval = true)
 	private List<Loan> loan = new ArrayList<>();
 
 	public long getId() {
@@ -77,6 +75,12 @@ public class Borrower {
 
 	public void addLoan(Loan newLoan) {
 		this.loan.add(newLoan);
+		newLoan.setBorrower(this);
+	}
+
+	public void removeLoan(Loan newLoan) {
+		this.loan.remove(newLoan);
+		newLoan.setBorrower(null);
 	}
 
 }
