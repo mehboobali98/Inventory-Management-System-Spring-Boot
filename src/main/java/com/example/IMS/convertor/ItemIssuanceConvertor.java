@@ -3,23 +3,14 @@ package com.example.IMS.convertor;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.IMS.dto.ItemIssuanceDto;
 import com.example.IMS.Utilities.Helper;
 import com.example.IMS.model.Loan;
-import com.example.IMS.service.BorrowerService;
-import com.example.IMS.service.ItemService;
 
 @Component
 public class ItemIssuanceConvertor {
-
-	@Autowired
-	private ItemService itemService;
-	
-	@Autowired
-	private BorrowerService borrowerService;
 
 	public ItemIssuanceDto modelToDto(Loan loan) {
 		ItemIssuanceDto dto = new ItemIssuanceDto();
@@ -27,9 +18,9 @@ public class ItemIssuanceConvertor {
 		dto.setLoanDuration(loan.getLoanDuration());
 		dto.setIssueDate(loan.getIssueDate());
 		dto.setDueDate(Helper.getDueDate(loan.getIssueDate(), loan.getLoanDuration()));
-		dto.setFineAmount(loan.getFineAmount());
-		dto.setItemId(itemService.findItemIdByLoanId(loan.getId()));
-		dto.setBorrowerId(borrowerService.getBorrowerIdByLoanId(loan.getId()));
+		dto.setFineAmount(loan.calculateFine());
+		dto.setItemId(loan.getItem().getId());
+		dto.setBorrowerId(loan.getBorrower().getId());
 		return dto;
 	}
 
@@ -38,6 +29,7 @@ public class ItemIssuanceConvertor {
 		loan.setId(dto.getId());
 		loan.setLoanDuration(dto.getLoanDuration());
 		loan.setIssueDate(Helper.getCurrentTime());
+		loan.setTotalFine(dto.getFineAmount());
 		return loan;
 	}
 
