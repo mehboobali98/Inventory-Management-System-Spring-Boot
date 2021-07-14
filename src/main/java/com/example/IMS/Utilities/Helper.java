@@ -9,9 +9,23 @@ import java.util.Date;
 public class Helper {
 
 	private static DateFormat dateFormat;
+	public static double fineRate;
 
 	static {
 		dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		fineRate = 100;
+	}
+
+	public static Date convertStringToDate(String date) {
+		Date newDate = null;
+		try {
+			newDate = dateFormat.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return newDate;
+
 	}
 
 	public static String getCurrentTime() {
