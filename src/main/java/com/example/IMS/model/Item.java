@@ -40,7 +40,6 @@ public class Item {
 	private String invoiceNumber;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
-	// @JoinColumn(name = "item_id_fk", referencedColumnName = "item_id")
 	private List<Loan> loan = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
