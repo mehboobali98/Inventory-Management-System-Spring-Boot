@@ -75,7 +75,7 @@ public class ItemIssuanceController {
 		Loan loan = itemIssuanceConvertor.dtoToModel(itemIssuanceDto);
 		borrower.addLoan(loan);
 		item.addLoan(loan);
-		itemIssuanceService.saveItemRepair(loan);
+		itemIssuanceService.saveItemIssued(loan);
 		return "redirect:/ItemIssuanceView";
 	}
 
