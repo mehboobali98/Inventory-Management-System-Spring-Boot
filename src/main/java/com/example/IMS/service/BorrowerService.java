@@ -60,7 +60,7 @@ public class BorrowerService implements IBorrowerService {
 		String errorMessage = "";
 		Borrower borrower = getBorrowerById(borrowerId);
 		if (borrower == null) {
-			errorMessage = "Borrower ID does not exist";
+			errorMessage = "Borrower id does not exist.";
 		}
 		return errorMessage;
 	}

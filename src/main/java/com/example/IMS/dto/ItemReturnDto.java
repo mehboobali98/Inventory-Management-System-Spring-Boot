@@ -1,8 +1,21 @@
 package com.example.IMS.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class ItemReturnDto {
+
+	@NotNull(message = "Item ID is mandatory")
+	@Min(value = 1, message = "Item ID must be greater than 0")
+	@Max(value = Long.MAX_VALUE, message = "Item ID must be lesser than " + Long.MAX_VALUE)
 	private long itemId;
+
+	@NotNull(message = "Vendor ID is mandatory")
+	@Min(value = 1, message = "Vendor ID must be greater than 0")
+	@Max(value = Long.MAX_VALUE, message = "Vendor ID must be lesser than " + Long.MAX_VALUE)
 	private long borrowerId;
+
 	private String returnDate;
 
 	public ItemReturnDto() {

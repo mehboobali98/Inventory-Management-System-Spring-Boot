@@ -14,4 +14,6 @@ public interface IItemIssuanceService {
 	void deleteIssuedItemById(long id);
 
 	Loan findItemIssuedById(long id);
+	
+	String validateLoanId(long loanId);
 }
