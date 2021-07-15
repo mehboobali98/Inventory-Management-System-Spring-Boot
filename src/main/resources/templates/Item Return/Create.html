@@ -29,13 +29,17 @@
 					</ol>
 					<!-- Text input-->
 					<form class="needs-validation" th:action="@{/ItemReturnCreate}" th:object="${itemReturnDto}" method="post">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
+						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label">Item ID</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="Item ID" placeholder="Enter Item ID" th:field = "*{itemId}" class="form-control" type="number">
+									<input name="Item ID" placeholder="Enter Item ID" th:field = "*{itemId}" class="form-control" type="number" min="1" required>
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
 							</div>
 						</div>
 						<!-- Text input-->
@@ -44,14 +48,15 @@
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="Borrower ID" placeholder="Enter Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number">
+									<input name="Borrower ID" placeholder="Enter Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number" min="1" required>
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('borrowerId')}" th:errors="*{borrowerId}"></div>
 							</div>
 						</div>
 						<!-- Button -->
 						<div class="form-group">
 							<label class="col-md-4 control-label"></label>
-							<div class="col-md-4"><br>
+							<div class="col-md-4">
 								<button type="submit" class="btn btn-success">Return Item</button>
 							</div>
 						</div>
