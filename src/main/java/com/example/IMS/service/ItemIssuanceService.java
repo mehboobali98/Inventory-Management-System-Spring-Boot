@@ -76,4 +76,14 @@ public class ItemIssuanceService implements IItemIssuanceService {
 		return returnedItems;
 	}
 
+	@Override
+	public String validateLoanId(long loanId) {
+		String errorMessage = "";
+		Loan loan = findItemIssuedById(loanId);
+		if (loan == null) {
+			errorMessage = "Loan ID does not exist. Invalid Input.";
+		}
+		return errorMessage;
+	}
+
 }
