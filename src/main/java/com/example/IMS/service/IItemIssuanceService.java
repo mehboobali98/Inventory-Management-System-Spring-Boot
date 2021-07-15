@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.IMS.model.Loan;
 
 public interface IItemIssuanceService {
-	void saveItemRepair(Loan loan);
+	void saveItemIssued(Loan loan);
 
 	List<Loan> getAllIssuedItems();
 

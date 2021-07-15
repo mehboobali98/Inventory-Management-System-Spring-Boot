@@ -16,7 +16,7 @@ public class ItemIssuanceService implements IItemIssuanceService {
 	private IItemIssuanceRepository itemIssuanceRepository;
 
 	@Override
-	public void saveItemRepair(Loan loan) {
+	public void saveItemIssued(Loan loan) {
 		this.itemIssuanceRepository.save(loan);
 	}
 
