@@ -28,6 +28,7 @@ public class ItemIssuanceDto {
 	private double fineAmount;
 	private String issueDate;
 	private String dueDate;
+	private String returnDate;
 
 	public ItemIssuanceDto() {
 	}
@@ -104,6 +105,14 @@ public class ItemIssuanceDto {
 
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
+	}
+
+	public String getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(String returnDate) {
+		this.returnDate = returnDate;
 	}
 
 }
