@@ -20,47 +20,52 @@
 					<div class="spinner-grow text-dark"></div>
 					<div class="spinner-grow text-light"></div>
 					<hr>
-					<h1> Item Repair History</h1>
+					<h1> Item Check-In History</h1>
 					<hr>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-						<li class="breadcrumb-item active">Item Repair History</a></li>
+						<li class="breadcrumb-item active">Item Check-In History</li>
 					</ol>
-					<button style="font-size:20px" type="button" class="btn btn-outline-dark" id="myButton">Add new Item <i class="fa fa-plus"></i></button>
+					<button style="font-size:20px" type="button" class="btn btn-outline-dark" id="myButton">Check-In An Item <i class="fa fa-plus"></i></button>
 					<br>
 					<br>
 					<table class="table table-bordered table-hover">
 						<thead class="thead-dark">
 							<tr>
-								<th>Repair ID</th>
 								<th>Item ID</th>
-								<th>Vendor ID</th>
-								<th>Purchase Price</th>
-								<th>Repair Cost</th>
-								<th colspan = "2" style="text-align:center"> Options </th>
+								<th>Borrower ID</th>
+								<th>Loan Duration</th>
+								<th>Issue Date</th>
+								<th>Due Date </th>
+								<th>Return Date</th>
+								<th>Fine Amount </th>
+								<th style="text-align:center"> Options </th>
 							</tr>
 						</thead>
-						<tbody th:if="${#lists.isEmpty(ItemRepairDtoList)}">
+						<tbody th:if="${#lists.isEmpty(ItemIssuanceDtoList)}">
 							<tr>
 								<td colspan="3" style="color: red;">No Data found</td>
 							</tr>
 						</tbody>
 						<tbody id="myTable">
-							<tr th:each="itemRepairDto : ${ItemRepairDtoList}">
-								<td th:text="${itemRepairDto.id}"></td>
-								<td th:text="${itemRepairDto.itemId}"></td>
-								<td th:text="${itemRepairDto.vendorId}"></td>
-								<td th:text="${itemRepairDto.price}"></td>
-								<td th:text="${itemRepairDto.repairCost}"></td>
-								<td> <a th:href="@{/ItemRepairEdit/{id}(id=${itemRepairDto.id})}" class="btn btn-primary"> Edit </a></td>
-								<td> <a th:href="@{/ItemRepairDelete/{id}(id=${itemRepairDto.id})}" class="btn btn-danger"> Delete </a></td>
+							<tr th:each="itemIssuanceDto : ${ItemIssuanceDtoList}">
+								<td th:text="${itemIssuanceDto.itemId}"></td>
+								<td th:text="${itemIssuanceDto.borrowerId}"></td>
+								<td th:text="${itemIssuanceDto.loanDuration}"></td>
+								<td th:text="${itemIssuanceDto.issueDate}"></td>
+								<td th:text="${itemIssuanceDto.dueDate}"></td>
+								<td th:text="${itemIssuanceDto.returnDate}"></td>
+								<td th:text="${itemIssuanceDto.fineAmount}"></td>
+								<td th:if="${itemIssuanceDto.fineAmount > 0}"> 
+									<a th:href="@{/FinePayment/{id}(id=${itemIssuanceDto.id})}" class="btn btn-danger"> Pay Fine</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<script type="text/javascript">
 					document.getElementById("myButton").onclick = function() {
-						location.href = "ItemRepairCreate";
+						location.href = "ItemReturnCreate";
 					};
 				</script>
 			</div>
