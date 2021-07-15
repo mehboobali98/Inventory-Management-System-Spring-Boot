@@ -32,7 +32,7 @@ public class ItemService implements IItemService {
 		String errorMessage = "";
 		Item item = getItemById(id);
 		if (item == null) {
-			errorMessage = "Item ID does not exist";
+			errorMessage = "Item id does not exist";
 		}
 		return errorMessage;
 	}
