@@ -1,5 +1,6 @@
 package com.example.IMS.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,14 @@ public class ItemIssuanceService implements IItemIssuanceService {
 
 	@Override
 	public List<Loan> getAllIssuedItems() {
-		return itemIssuanceRepository.findAll();
+		List<Loan> loanList = itemIssuanceRepository.findAll();
+		List<Loan> issuedItems = new ArrayList<>();
+		for (Loan l : loanList) {
+			if (l.getReturnDate().isEmpty()) {
+				issuedItems.add(l);
+			}
+		}
+		return issuedItems;
 	}
 
 	@Override
@@ -40,6 +48,32 @@ public class ItemIssuanceService implements IItemIssuanceService {
 			// Exception
 		}
 		return loanItem;
+	}
+
+	public Loan findItemIssued(long borrowerId, long itemId) {
+		List<Loan> loanList = getAllIssuedItems();
+		Loan loan = null;
+		for (Loan l : loanList) {
+			if (l.getReturnDate() == null | l.getReturnDate().isEmpty()) {
+				if (l.getBorrower().getId() == borrowerId & l.getItem().getId() == itemId) {
+					loan = l;
+					break;
+				}
+			}
+		}
+		return loan;
+	}
+
+	@Override
+	public List<Loan> getAllReturnedItem() {
+		List<Loan> loanList = itemIssuanceRepository.findAll();
+		List<Loan> returnedItems = new ArrayList<>();
+		for (Loan l : loanList) {
+			if (!(l.getReturnDate().isEmpty())) {
+				returnedItems.add(l);
+			}
+		}
+		return returnedItems;
 	}
 
 }

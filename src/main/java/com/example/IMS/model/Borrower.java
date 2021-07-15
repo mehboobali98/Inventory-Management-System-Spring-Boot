@@ -30,7 +30,7 @@ public class Borrower {
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "borrower", orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "borrower")
 	private List<Loan> loan = new ArrayList<>();
 
 	public long getId() {
