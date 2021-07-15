@@ -96,18 +96,27 @@ public class Loan {
 	public void setBorrower(Borrower borrower) {
 		this.borrower = borrower;
 	}
+	
+	public void setReturnDate()
+	{
+		returnDate = Helper.getCurrentTime();
+	}
 
 	public double calculateFine() {
-		double _totalFine = 0;
-		if (!returnDate.isEmpty()) {
-			Date _issueDate = Helper.convertStringToDate(issueDate);
-			Date _returnDate = Helper.convertStringToDate(returnDate);
-			long daysBetween = ChronoUnit.DAYS.between(_issueDate.toInstant(), _returnDate.toInstant());
-			if (daysBetween > 0) {
-				_totalFine = daysBetween * Helper.fineRate;
-			} else {
-				_totalFine = 0;
+		double _totalFine = 10;
+		try {
+			if (!returnDate.isEmpty()) {
+				Date _issueDate = Helper.convertStringToDate(issueDate);
+				Date _returnDate = Helper.convertStringToDate(returnDate);
+				long daysBetween = ChronoUnit.DAYS.between(_issueDate.toInstant(), _returnDate.toInstant());
+				if (daysBetween > 0) {
+					_totalFine = daysBetween * Helper.fineRate;
+				} else {
+					_totalFine = 0;
+				}
 			}
+		} catch (NullPointerException e) {
+			System.out.println("Null Pointer Exception Caught");
 		}
 		totalFine = _totalFine;
 		return _totalFine;
