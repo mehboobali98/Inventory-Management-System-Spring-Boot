@@ -18,10 +18,10 @@ public class ItemIssuanceConvertor {
 		dto.setLoanDuration(loan.getLoanDuration());
 		dto.setIssueDate(loan.getIssueDate());
 		dto.setDueDate(Helper.getDueDate(loan.getIssueDate(), loan.getLoanDuration()));
-		dto.setFineAmount(loan.calculateFine());
 		dto.setItemId(loan.getItem().getId());
 		dto.setBorrowerId(loan.getBorrower().getId());
 		dto.setFineAmount(loan.getTotalFine());
+		dto.setReturnDate(loan.getReturnDate());
 		return dto;
 	}
 
@@ -31,6 +31,7 @@ public class ItemIssuanceConvertor {
 		loan.setLoanDuration(dto.getLoanDuration());
 		loan.setIssueDate(Helper.getCurrentTime());
 		loan.setTotalFine(dto.getFineAmount());
+		loan.setReturnDate("");
 		return loan;
 	}
 
