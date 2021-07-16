@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<!-- Form starts from here -->
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+					<h2>Fine Calculation</h2>
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+						<li class="breadcrumb-item active">Fine Calculation</li>
+					</ol>
+					<!-- Text input-->
+					<form class="needs-validation" th:action="@{/FineDetails}" th:object="${fineDto}" method="post">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Borrower ID</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="borrowerId" placeholder="Enter Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number" min="1" required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label"></label>
+							<div class="col-md-4">
+								<button type="submit" class="btn btn-success">Calculate Fine</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<div th:replace="footer :: myFooter"></div>
+	</body>
+</html>

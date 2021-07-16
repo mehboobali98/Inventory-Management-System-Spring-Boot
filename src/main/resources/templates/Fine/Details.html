@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+					<div class="spinner-grow text-muted"></div>
+					<div class="spinner-grow text-primary"></div>
+					<div class="spinner-grow text-success"></div>
+					<div class="spinner-grow text-info"></div>
+					<div class="spinner-grow text-warning"></div>
+					<div class="spinner-grow text-danger"></div>
+					<div class="spinner-grow text-secondary"></div>
+					<div class="spinner-grow text-dark"></div>
+					<div class="spinner-grow text-light"></div>
+					<hr>
+					<h1> Fine Details </h1>
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+						<li class="breadcrumb-item active">Fine Details</li>
+					</ol>
+					<hr>
+					<div>
+						<dl class="dl-horizontal">
+							<dt> Borrower ID</dt>
+							<dd th:text="${fineDto.borrowerId}"></dd>
+							<dt> Total Fine </dt>
+							<dd th:text="${fineDto.totalFine}"></dd>
+						</dl>
+					</div>
+					<form th:if="${fineDto.totalFine > 0} "th:action="@{/FinePayment/{borrowerId}(borrowerId=${fineDto.borrowerId})}" th:object="${fineDto}" method="post">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Fine Amount Paid</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+									<input name="finePaid" placeholder ="Enter Fine Amount Paid" th:field = "*{finePaid}" class="form-control" type="number" step="any" min="0" required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label"></label>
+							<div class="col-md-4">
+								<button type="submit" class="btn btn-success">Pay Fine</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
