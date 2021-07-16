@@ -11,9 +11,9 @@ public class ItemReturnDto {
 	@Max(value = Long.MAX_VALUE, message = "Item ID must be lesser than " + Long.MAX_VALUE)
 	private long itemId;
 
-	@NotNull(message = "Vendor ID is mandatory")
-	@Min(value = 1, message = "Vendor ID must be greater than 0")
-	@Max(value = Long.MAX_VALUE, message = "Vendor ID must be lesser than " + Long.MAX_VALUE)
+	@NotNull(message = "Borrower ID is mandatory")
+	@Min(value = 1, message = "Borrower ID must be greater than 0")
+	@Max(value = Long.MAX_VALUE, message = "Borrower ID must be lesser than " + Long.MAX_VALUE)
 	private long borrowerId;
 
 	private String returnDate;

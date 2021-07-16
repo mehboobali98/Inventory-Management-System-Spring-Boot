@@ -20,15 +20,12 @@
 					<div class="spinner-grow text-dark"></div>
 					<div class="spinner-grow text-light"></div>
 					<hr>
-					<h1> Item Check-In History </h1>
+					<h1> Fine History </h1>
 					<hr>
 					<ol class="breadcrumb mb-4">
 						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-						<li class="breadcrumb-item active">Item Check-In History</li>
+						<li class="breadcrumb-item active"> Fine History</li>
 					</ol>
-					<button style="font-size:20px" type="button" class="btn btn-outline-dark" id="myButton">Check-In An Item <i class="fa fa-plus"></i></button>
-					<br>
-					<br>
 					<table class="table table-bordered table-hover">
 						<thead class="thead-dark">
 							<tr>
@@ -42,13 +39,13 @@
 								<th style="text-align:center"> Options </th>
 							</tr>
 						</thead>
-						<tbody th:if="${#lists.isEmpty(ItemIssuanceDtoList)}">
+						<tbody th:if="${#lists.isEmpty(itemsWithFineList)}">
 							<tr>
 								<td colspan="3" style="color: red;">No Data found</td>
 							</tr>
 						</tbody>
 						<tbody id="myTable">
-							<tr th:each="itemIssuanceDto : ${ItemIssuanceDtoList}">
+							<tr th:each="itemIssuanceDto : ${itemsWithFineList}">
 								<td th:text="${itemIssuanceDto.itemId}"></td>
 								<td th:text="${itemIssuanceDto.borrowerId}"></td>
 								<td th:text="${itemIssuanceDto.loanDuration}"></td>
@@ -63,11 +60,6 @@
 						</tbody>
 					</table>
 				</div>
-				<script type="text/javascript">
-					document.getElementById("myButton").onclick = function() {
-						location.href = "ItemReturnCreate";
-					};
-				</script>
 			</div>
 		</div>
 	</body>

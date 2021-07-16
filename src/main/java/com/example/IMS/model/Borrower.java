@@ -83,4 +83,25 @@ public class Borrower {
 		newLoan.setBorrower(null);
 	}
 
+	public double totalFine() {
+		double totalFine = 0;
+		for (Loan l : loan) {
+			totalFine += l.calculateFine();
+		}
+		return totalFine;
+	}
+
+	public void updateFine(double finePaid) {
+		double fine = 0;
+		for (Loan l : loan) {
+			if (finePaid <= 0) {
+				break;
+			} else {
+				fine = l.getTotalFine();
+				l.setTotalFine(fine - finePaid);
+				finePaid -= fine;
+			}
+		}
+	}
+
 }

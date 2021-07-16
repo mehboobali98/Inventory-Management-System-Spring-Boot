@@ -65,4 +65,10 @@ public class BorrowerService implements IBorrowerService {
 		return errorMessage;
 	}
 
+	@Override
+	public void updateBorrower(Borrower borrower) {
+		borrowerRepository.save(borrower);
+
+	}
+
 }

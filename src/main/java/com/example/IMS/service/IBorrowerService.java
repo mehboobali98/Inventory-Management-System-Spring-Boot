@@ -10,6 +10,8 @@ public interface IBorrowerService {
 	List<Borrower> getAllBorrowers();
 
 	long getBorrowerIdByLoanId(long loanId);
-	
+
 	String validateBorrowerId(long borrowerId);
+
+	void updateBorrower(Borrower borrower);
 }
