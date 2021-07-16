@@ -57,7 +57,7 @@
 								<td th:text="${itemIssuanceDto.returnDate}"></td>
 								<td th:text="${itemIssuanceDto.fineAmount}"></td>
 								<td th:if="${itemIssuanceDto.fineAmount > 0}"> 
-									<a th:href="@{/FinePayment/{id}(id=${itemIssuanceDto.id})}" class="btn btn-danger"> Pay Fine</a>
+									<a th:href="@{/FineCreate}" class="btn btn-danger"> Pay Fine</a>
 								</td>
 							</tr>
 						</tbody>
