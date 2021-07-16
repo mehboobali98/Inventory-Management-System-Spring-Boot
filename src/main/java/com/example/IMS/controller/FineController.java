@@ -29,7 +29,6 @@ public class FineController {
 	public String Index(Model model) {
 		model.addAttribute("itemsWithFineList", itemIssuanceService.getItemsWithFine());
 		return "/Fine/View";
-
 	}
 
 	@GetMapping("/FineCreate")
@@ -52,6 +51,7 @@ public class FineController {
 			@Valid @ModelAttribute("fineDto") FineDto fineDto, BindingResult result) {
 		Borrower borrower = borrowerService.getBorrowerById(fineDto.getBorrowerId());
 		borrower.updateFine(fineDto.getFinePaid());
+		borrowerService.updateBorrower(borrower);
 		return "redirect:/FineView";
 	}
 }
