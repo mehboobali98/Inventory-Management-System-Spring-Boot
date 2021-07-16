@@ -50,6 +50,7 @@ public class ItemIssuanceService implements IItemIssuanceService {
 		return loanItem;
 	}
 
+	@Override
 	public Loan findItemIssued(long borrowerId, long itemId) {
 		List<Loan> loanList = getAllIssuedItems();
 		Loan loan = null;
@@ -84,6 +85,18 @@ public class ItemIssuanceService implements IItemIssuanceService {
 			errorMessage = "Loan ID does not exist. Invalid Input.";
 		}
 		return errorMessage;
+	}
+
+	@Override
+	public List<Loan> getItemsWithFine() {
+		List<Loan> loanList = itemIssuanceRepository.findAll();
+		List<Loan> itemsWithFine = new ArrayList<>();
+		for (Loan l : loanList) {
+			if (l.getTotalFine() > 0) {
+				itemsWithFine.add(l);
+			}
+		}
+		return itemsWithFine;
 	}
 
 }
