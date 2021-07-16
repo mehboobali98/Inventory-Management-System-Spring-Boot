@@ -36,6 +36,9 @@
 						</dl>
 					</div>
 					<form th:if="${fineDto.totalFine > 0} "th:action="@{/FinePayment/{borrowerId}(borrowerId=${fineDto.borrowerId})}" th:object="${fineDto}" method="post">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
+						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label">Fine Amount Paid</label>
 							<div class="col-md-4 inputGroupContainer">
@@ -43,6 +46,7 @@
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 									<input name="finePaid" placeholder ="Enter Fine Amount Paid" th:field = "*{finePaid}" class="form-control" type="number" step="any" min="0" required>
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('finePaid')}" th:errors="*{finePaid}"></div>
 							</div>
 						</div>
 						<div class="form-group">

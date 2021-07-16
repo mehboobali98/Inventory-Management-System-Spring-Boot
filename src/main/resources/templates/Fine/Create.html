@@ -29,6 +29,9 @@
 					</ol>
 					<!-- Text input-->
 					<form class="needs-validation" th:action="@{/FineDetails}" th:object="${fineDto}" method="post">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
+						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label">Borrower ID</label>
 							<div class="col-md-4 inputGroupContainer">
@@ -36,6 +39,7 @@
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 									<input name="borrowerId" placeholder="Enter Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number" min="1" required>
 								</div>
+								<div class="alert alert-danger" th:if="${#fields.hasErrors('borrowerId')}" th:errors="*{borrowerId}"></div>
 							</div>
 						</div>
 						<div class="form-group">
