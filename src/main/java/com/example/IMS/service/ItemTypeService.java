@@ -37,4 +37,14 @@ public class ItemTypeService implements IItemTypeService {
 		return itemType;
 	}
 
+	@Override
+	public String validateItemTypeByName(String name) {
+		String errorMessage = "";
+		ItemType itemType = getItemTypeByName(name);
+		if (itemType == null) {
+			errorMessage = "ItemType with name: " + name + " does not exist.";
+		}
+		return errorMessage;
+	}
+
 }
