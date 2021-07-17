@@ -78,6 +78,8 @@ public class ItemReturnController {
 			item.removeLoan(loan);
 			loan.setReturnDate();
 			loan.calculateFine();
+			item.increaseQuantity();
+			itemService.saveItem(item);
 			itemIssuanceService.saveItemIssued(loan);
 		} catch (NullPointerException e) {
 			System.out.println("Null Pointer Exception Caught in Item Return Controller.");
