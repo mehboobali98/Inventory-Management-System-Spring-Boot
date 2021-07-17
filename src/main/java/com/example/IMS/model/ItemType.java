@@ -12,10 +12,10 @@ import javax.persistence.Table;
 public class ItemType {
 
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "item_type_id")
 	private long id;
-	
+
 	@Column(name = "type_name")
 	private String typeName;
 
@@ -34,7 +34,5 @@ public class ItemType {
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
 	}
-	
-	
-	
+
 }
