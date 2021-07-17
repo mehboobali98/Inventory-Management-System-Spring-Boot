@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<div th:replace="header :: myHeader"></div>
-	</head>
-	<body class="sb-nav-fixed">
-		<div th:replace="navbar :: myNavbar"></div>
-		<div id="layoutSidenav">
-			<div th:replace="sidebar :: mySidebar"></div>
-			<!-- Form starts from here -->
-			<div id="layoutSidenav_content">
-				<div class="container">
-					<br>
-					<div class="spinner-grow text-muted"></div>
-					<div class="spinner-grow text-primary"></div>
-					<div class="spinner-grow text-success"></div>
-					<div class="spinner-grow text-info"></div>
-					<div class="spinner-grow text-warning"></div>
-					<div class="spinner-grow text-danger"></div>
-					<div class="spinner-grow text-secondary"></div>
-					<div class="spinner-grow text-dark"></div>
-					<div class="spinner-grow text-light"></div>
-					<hr>
-					<h2>Item Return</h2>
-					<hr>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-						<li class="breadcrumb-item active">Item Return</li>
-					</ol>
-					<!-- Text input-->
-					<form class="needs-validation" th:action="@{/ItemReturnCreate}" th:object="${itemReturnDto}" method="post">
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
-							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
-						</div>
+<head>
+<div th:replace="header :: myHeader"></div>
+</head>
+<body class="sb-nav-fixed">
+	<div th:replace="navbar :: myNavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="sidebar :: mySidebar"></div>
+		<!-- Form starts from here -->
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<br>
+				<div class="spinner-grow text-muted"></div>
+				<div class="spinner-grow text-primary"></div>
+				<div class="spinner-grow text-success"></div>
+				<div class="spinner-grow text-info"></div>
+				<div class="spinner-grow text-warning"></div>
+				<div class="spinner-grow text-danger"></div>
+				<div class="spinner-grow text-secondary"></div>
+				<div class="spinner-grow text-dark"></div>
+				<div class="spinner-grow text-light"></div>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+					<li class="breadcrumb-item active">Return Return</li>
+				</ol>
+				<!-- Text input-->
+				<form class="needs-validation" th:action="@{/ItemReturnCreate}"
+					th:object="${itemReturnDto}" method="post">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('global')}">
+						<ul>
+							<li th:each="err : ${#fields.errors('global')}" th:text="${err}"></li>
+						</ul>
+					</div>
+					<fieldset class="border p-2">
+						<legend class="w-auto"> Return Item </legend>
 						<div class="form-group">
 							<label class="col-md-4 control-label">Item ID</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="Item ID" placeholder="Enter Item ID" th:field = "*{itemId}" class="form-control" type="number" min="1" required>
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input name="Item ID"
+										placeholder="Enter Item ID" th:field="*{itemId}"
+										class="form-control" type="number" min="1" required>
 								</div>
-								<div class="alert alert-danger" th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
 							</div>
 						</div>
 						<!-- Text input-->
@@ -47,25 +53,32 @@
 							<label class="col-md-4 control-label">Borrower ID</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input name="Borrower ID" placeholder="Enter Borrower ID" th:field = "*{borrowerId}" class="form-control" type="number" min="1" required>
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input
+										name="Borrower ID" placeholder="Enter Borrower ID"
+										th:field="*{borrowerId}" class="form-control" type="number"
+										min="1" required>
 								</div>
-								<div class="alert alert-danger" th:if="${#fields.hasErrors('borrowerId')}" th:errors="*{borrowerId}"></div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('borrowerId')}"
+									th:errors="*{borrowerId}"></div>
 							</div>
 						</div>
 						<!-- Button -->
 						<div class="form-group">
 							<label class="col-md-4 control-label"></label>
 							<div class="col-md-4">
-								<button type="submit" class="btn btn-success">Return Item</button>
+								<button type="submit" class="btn btn-success float-right">Submit</button>
+								<button type="reset" class="btn btn-danger">Reset</button>
 							</div>
 						</div>
-					</form>
-				</div>
+					</fieldset>
+				</form>
 			</div>
 		</div>
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<div th:replace="footer :: myFooter"></div>
-	</body>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<div th:replace="footer :: myFooter"></div>
+</body>
 </html>
