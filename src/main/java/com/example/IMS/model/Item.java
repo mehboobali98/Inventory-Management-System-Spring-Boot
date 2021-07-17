@@ -131,4 +131,12 @@ public class Item {
 		newLoan.setBorrower(null);
 	}
 
+	public void descreaseQuantity() {
+		quantity--;
+	}
+
+	public void increaseQuantity() {
+		quantity++;
+	}
+
 }

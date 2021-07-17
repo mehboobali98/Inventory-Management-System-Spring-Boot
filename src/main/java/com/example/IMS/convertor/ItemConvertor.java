@@ -45,7 +45,6 @@ public class ItemConvertor {
 
 	public Item dtoToModel(ItemDto itemDto) {
 		Item item = new Item();
-		item.setId(itemDto.getItemId());
 		item.setFineRate(itemDto.getFineRate());
 		item.setInvoiceNumber(itemDto.getInvoiceNumber());
 		item.setQuantity(itemDto.getItemQuantity());
