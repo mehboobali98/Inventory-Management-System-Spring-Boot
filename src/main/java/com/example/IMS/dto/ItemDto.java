@@ -1,21 +1,42 @@
 package com.example.IMS.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class ItemDto {
 
 	private long itemId;
 
+	@NotNull(message = "Item quantity is mandatory.")
+	@Min(value = 1, message = "Item quantity must be greater than 0.")
+	@Max(value = Integer.MAX_VALUE, message = "Item quantity must be lesser than " + Integer.MAX_VALUE)
 	private int itemQuantity;
 
+	@NotNull(message = "Invoice number is mandatory.")
+	@Min(value = 1, message = "Invoice must be greater than 0.")
+	@Max(value = Long.MAX_VALUE, message = "Invoice number must be lesser than " + Long.MAX_VALUE)
 	private long invoiceNumber;
 
+	@NotNull(message = "Item price is mandatory.")
+	@Min(value = 1, message = "Item price must be greater than 0.")
+	@Max(value = (long) Double.MAX_VALUE, message = "Item price must be lesser than " + Double.MAX_VALUE)
 	private double itemPrice;
 
+	@NotNull(message = "Fine rate is mandatory.")
+	@Min(value = 1, message = "Fine rate must be greater than 0.")
+	@Max(value = (long) Double.MAX_VALUE, message = "Fine rate must be lesser than " + Double.MAX_VALUE)
 	private double fineRate;
 
+	@NotNull(message = "Item name is mandatory.")
+	@Pattern(regexp = "(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?", message = "Item name can only contain alphabets.")
 	private String itemName;
 
 	private String itemType;
 
+	@NotNull(message = "Item name is mandatory.")
+	@Pattern(regexp = "(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?", message = "Vendor name can only contain alphabets.")
 	private String vendorName;
 
 	public ItemDto() {
