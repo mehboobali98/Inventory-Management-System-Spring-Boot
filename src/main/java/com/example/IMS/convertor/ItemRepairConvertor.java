@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.IMS.dto.ItemRepairDto;
 import com.example.IMS.model.ItemRepair;
+import com.example.IMS.service.ItemService;
 import com.example.IMS.service.VendorService;
 
 @Component
@@ -15,6 +16,9 @@ public class ItemRepairConvertor {
 
 	@Autowired
 	private VendorService vendorService;
+
+	@Autowired
+	private ItemService itemService;
 
 	public ItemRepairDto modelToDto(ItemRepair item) {
 		long itemId = 0;
@@ -34,6 +38,7 @@ public class ItemRepairConvertor {
 		itemRepair.setId(item.getId());
 		itemRepair.setCost(item.getRepairCost());
 		itemRepair.setPrice(item.getPrice());
+		itemRepair.setItem(itemService.getItemById(item.getItemId()));
 		itemRepair.setVendor(vendorService.getVendorById(item.getVendorId()));
 		return itemRepair;
 	}

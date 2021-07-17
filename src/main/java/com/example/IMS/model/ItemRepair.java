@@ -1,6 +1,5 @@
 package com.example.IMS.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +25,7 @@ public class ItemRepair {
 	@Column(name = "item_price")
 	private double price;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id_fk")
 	private Item item;
 

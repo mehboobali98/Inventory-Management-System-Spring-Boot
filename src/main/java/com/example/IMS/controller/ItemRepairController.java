@@ -59,6 +59,7 @@ public class ItemRepairController {
 		if (result.hasErrors()) {
 			return "/Item Repair/Create";
 		}
+
 		itemRepairService.saveItemRepair(itemRepairConvertor.DtoToModel(itemRepairDto));
 		return "redirect:/ItemRepairView";
 
