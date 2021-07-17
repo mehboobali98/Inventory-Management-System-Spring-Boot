@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="header :: myHeader"></div>
+</head>
+<body class="sb-nav-fixed">
+	<div th:replace="navbar :: myNavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="sidebar :: mySidebar"></div>
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<br>
+				<div class="spinner-grow text-muted"></div>
+				<div class="spinner-grow text-primary"></div>
+				<div class="spinner-grow text-success"></div>
+				<div class="spinner-grow text-info"></div>
+				<div class="spinner-grow text-warning"></div>
+				<div class="spinner-grow text-danger"></div>
+				<div class="spinner-grow text-secondary"></div>
+				<div class="spinner-grow text-dark"></div>
+				<div class="spinner-grow text-light"></div>
+				<hr>
+				<h1>Inventory Items</h1>
+				<hr>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+					<li class="breadcrumb-item active">Inventory Items</li>
+				</ol>
+				<button style="font-size: 20px" type="button"
+					class="btn btn-outline-dark" id="myButton">
+					Add a New Item <i class="fa fa-plus"></i>
+				</button>
+				<br> <br>
+				<table class="table table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Fine Rate</th>
+							<th>Invoice Number</th>
+							<th>Type</th>
+							<th>Vendor Name</th>
+							<th colspan="2" style="text-align: center">Options</th>
+						</tr>
+					</thead>
+					<tbody th:if="${#lists.isEmpty(itemDtoList)}">
+						<tr>
+							<td colspan="3" style="color: red;">No Data found</td>
+						</tr>
+					</tbody>
+					<tbody id="myTable">
+						<tr th:each="itemDto : ${itemDtoList}">
+							<td th:text="${itemDto.itemId}"></td>
+							<td th:text="${itemDto.itemName}"></td>
+							<td th:text="${itemDto.itemPrice}"></td>
+							<td th:text="${itemDto.itemQuantity}"></td>
+							<td th:text="${itemDto.fineRate}"></td>
+							<td th:text="${itemDto.invoiceNumber}"></td>
+							<td th:text="${itemDto.itemType}"></td>
+							<td th:text="${itemDto.vendorName}"></td>
+							<td><a th:href="@{/ItemEdit/{id}(id=${itemDto.itemId})}"
+								class="btn btn-primary"> Edit </a></td>
+							<td><a th:href="@{/ItemDelete/{id}(id=${itemDto.itemId})}"
+								class="btn btn-danger"> Delete </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<script type="text/javascript">
+					document.getElementById("myButton").onclick = function() {
+						location.href = "ItemCreate";
+					};
+				</script>
+		</div>
+	</div>
+</body>
+</html>
