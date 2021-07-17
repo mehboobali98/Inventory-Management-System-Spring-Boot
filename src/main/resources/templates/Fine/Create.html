@@ -28,31 +28,34 @@
 				<!-- Text input-->
 				<form class="needs-validation" th:action="@{/FineDetails}"
 					th:object="${fineDto}" method="post">
-					<div class="alert alert-danger"
-						th:if="${#fields.hasErrors('global')}">
-						<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Borrower ID</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input name="borrowerId"
-									placeholder="Enter Borrower ID" th:field="*{borrowerId}"
-									class="form-control" type="number" min="1" required>
+					<fieldset class="border p-2">
+						<legend class="w-auto"> Fine Calculation </legend>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('global')}">
+							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Borrower ID</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input name="borrowerId"
+										placeholder="Enter Borrower ID" th:field="*{borrowerId}"
+										class="form-control" type="number" min="1" required>
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('borrowerId')}"
+									th:errors="*{borrowerId}"></div>
 							</div>
-							<div class="alert alert-danger"
-								th:if="${#fields.hasErrors('borrowerId')}"
-								th:errors="*{borrowerId}"></div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label"></label>
-						<div class="col-md-4">
-							<button type="submit" class="btn btn-success float-right">Calculate
-								Fine</button>
+						<div class="form-group">
+							<label class="col-md-4 control-label"></label>
+							<div class="col-md-4">
+								<button type="submit" class="btn btn-success float-right">Calculate
+									Fine</button>
+							</div>
 						</div>
-					</div>
+					</fieldset>
 				</form>
 			</div>
 		</div>
