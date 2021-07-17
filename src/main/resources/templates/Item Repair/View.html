@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<div th:replace="header :: myHeader"></div>
-	</head>
-	<body class="sb-nav-fixed">
-		<div th:replace="navbar :: myNavbar"></div>
-		<div id="layoutSidenav">
-			<div th:replace="sidebar :: mySidebar"></div>
-			<div id="layoutSidenav_content">
-				<div class="container">
-					<br>
-					<div class="spinner-grow text-muted"></div>
-					<div class="spinner-grow text-primary"></div>
-					<div class="spinner-grow text-success"></div>
-					<div class="spinner-grow text-info"></div>
-					<div class="spinner-grow text-warning"></div>
-					<div class="spinner-grow text-danger"></div>
-					<div class="spinner-grow text-secondary"></div>
-					<div class="spinner-grow text-dark"></div>
-					<div class="spinner-grow text-light"></div>
-					<hr>
-					<h1> Item Repair History</h1>
-					<hr>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-						<li class="breadcrumb-item active">Item Repair History</a></li>
-					</ol>
-					<button style="font-size:20px" type="button" class="btn btn-outline-dark" id="myButton">Add new Item <i class="fa fa-plus"></i></button>
-					<br>
-					<br>
-					<table class="table table-bordered table-hover">
-						<thead class="thead-dark">
-							<tr>
-								<th>Repair ID</th>
-								<th>Item ID</th>
-								<th>Vendor ID</th>
-								<th>Purchase Price</th>
-								<th>Repair Cost</th>
-								<th colspan = "2" style="text-align:center"> Options </th>
-							</tr>
-						</thead>
-						<tbody th:if="${#lists.isEmpty(ItemRepairDtoList)}">
-							<tr>
-								<td colspan="3" style="color: red;">No Data found</td>
-							</tr>
-						</tbody>
-						<tbody id="myTable">
-							<tr th:each="itemRepairDto : ${ItemRepairDtoList}">
-								<td th:text="${itemRepairDto.id}"></td>
-								<td th:text="${itemRepairDto.itemId}"></td>
-								<td th:text="${itemRepairDto.vendorId}"></td>
-								<td th:text="${itemRepairDto.price}"></td>
-								<td th:text="${itemRepairDto.repairCost}"></td>
-								<td> <a th:href="@{/ItemRepairEdit/{id}(id=${itemRepairDto.id})}" class="btn btn-primary"> Edit </a></td>
-								<td> <a th:href="@{/ItemRepairDelete/{id}(id=${itemRepairDto.id})}" class="btn btn-danger"> Delete </a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<script type="text/javascript">
+<head>
+<div th:replace="header :: myHeader"></div>
+</head>
+<body class="sb-nav-fixed">
+	<div th:replace="navbar :: myNavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="sidebar :: mySidebar"></div>
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<br>
+				<div class="spinner-grow text-muted"></div>
+				<div class="spinner-grow text-primary"></div>
+				<div class="spinner-grow text-success"></div>
+				<div class="spinner-grow text-info"></div>
+				<div class="spinner-grow text-warning"></div>
+				<div class="spinner-grow text-danger"></div>
+				<div class="spinner-grow text-secondary"></div>
+				<div class="spinner-grow text-dark"></div>
+				<div class="spinner-grow text-light"></div>
+				<hr>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+					<li class="breadcrumb-item active">Item Repair History</a></li>
+				</ol>
+				<button style="font-size: 20px" type="button"
+					class="btn btn-outline-dark" id="myButton">
+					Add new repair item <i class="fa fa-plus"></i>
+				</button>
+				<br> <br>
+				<table class="table table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th>Repair ID</th>
+							<th>Item ID</th>
+							<th>Vendor ID</th>
+							<th>Purchase Price</th>
+							<th>Repair Cost</th>
+							<th colspan="2" style="text-align: center">Options</th>
+						</tr>
+					</thead>
+					<tbody th:if="${#lists.isEmpty(ItemRepairDtoList)}">
+						<tr>
+							<td colspan="3" style="color: red;">No Data found</td>
+						</tr>
+					</tbody>
+					<tbody id="myTable">
+						<tr th:each="itemRepairDto : ${ItemRepairDtoList}">
+							<td th:text="${itemRepairDto.id}"></td>
+							<td th:text="${itemRepairDto.itemId}"></td>
+							<td th:text="${itemRepairDto.vendorId}"></td>
+							<td th:text="${itemRepairDto.price}"></td>
+							<td th:text="${itemRepairDto.repairCost}"></td>
+							<td><a
+								th:href="@{/ItemRepairEdit/{id}(id=${itemRepairDto.id})}"
+								class="btn btn-primary"> Edit </a></td>
+							<td><a
+								th:href="@{/ItemRepairDelete/{id}(id=${itemRepairDto.id})}"
+								class="btn btn-danger"> Delete </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<script type="text/javascript">
 					document.getElementById("myButton").onclick = function() {
 						location.href = "ItemRepairCreate";
 					};
 				</script>
-			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

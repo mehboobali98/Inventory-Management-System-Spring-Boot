@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<div th:replace="header :: myHeader"></div>
-	</head>
-	<body class="sb-nav-fixed">
-		<div th:replace="navbar :: myNavbar"></div>
-		<div id="layoutSidenav">
-			<div th:replace="sidebar :: mySidebar"></div>
-			<!--- Navbar ends here--->
-			<!-- Form starts from here -->
-			<div id="layoutSidenav_content">
-				<div class="container">
-					<br>
-					<div class="spinner-grow text-muted"></div>
-					<div class="spinner-grow text-primary"></div>
-					<div class="spinner-grow text-success"></div>
-					<div class="spinner-grow text-info"></div>
-					<div class="spinner-grow text-warning"></div>
-					<div class="spinner-grow text-danger"></div>
-					<div class="spinner-grow text-secondary"></div>
-					<div class="spinner-grow text-dark"></div>
-					<div class="spinner-grow text-light"></div>
-					<hr>
-					<h2>Item Repair Form</h2>
-					<hr>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-						<li class="breadcrumb-item active">Item Repair</li>
-					</ol>
-					<form th:action="@{/ItemRepairCreate}" th:object="${itemRepairDto}" method="post">
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
-							<p th:each="err : ${#fields.errors('global')}" th:text="${err}"></p>
+<head>
+<div th:replace="header :: myHeader"></div>
+</head>
+<body class="sb-nav-fixed">
+	<div th:replace="navbar :: myNavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="sidebar :: mySidebar"></div>
+		<!--- Navbar ends here--->
+		<!-- Form starts from here -->
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<br>
+				<div class="spinner-grow text-muted"></div>
+				<div class="spinner-grow text-primary"></div>
+				<div class="spinner-grow text-success"></div>
+				<div class="spinner-grow text-info"></div>
+				<div class="spinner-grow text-warning"></div>
+				<div class="spinner-grow text-danger"></div>
+				<div class="spinner-grow text-secondary"></div>
+				<div class="spinner-grow text-dark"></div>
+				<div class="spinner-grow text-light"></div>
+				<hr>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+					<li class="breadcrumb-item active">Add sItem Repair</li>
+				</ol>
+				<form th:action="@{/ItemRepairCreate}" th:object="${itemRepairDto}"
+					method="post">
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('global')}">
+						<ul>
+							<li th:each="err : ${#fields.errors('global')}" th:text="${err}"></li>
+						</ul>
+					</div>
+					<fieldset class="border p-2">
+						<legend class="w-auto"> Add Item Repair </legend>
+						<div class="form-group">
+							<label for="">Item ID</label> <input type="number"
+								placeholder="Item ID" th:field="*{itemId}" class="form-control"
+								min="1">
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
 						</div>
 						<div class="form-group">
-							<label for="">Item ID</label>
-							<input type="number" placeholder="Item ID" th:field = "*{itemId}" class="form-control" min="1">
-							<div class="alert alert-danger" th:if="${#fields.hasErrors('itemId')}" th:errors="*{itemId}"></div>
+							<label for="">Vendor ID</label> <input type="number"
+								placeholder="Vendor ID" th:field="*{vendorId}"
+								class="form-control" min="1">
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('vendorId')}" th:errors="*{vendorId}"></div>
 						</div>
 						<div class="form-group">
-							<label for="">Vendor ID</label>
-							<input type="number" placeholder="Vendor ID" th:field = "*{vendorId}" class="form-control" min="1">
-							<div class="alert alert-danger" th:if="${#fields.hasErrors('vendorId')}" th:errors="*{vendorId}"></div>
+							<label for="">Item Price</label> <input type="number"
+								placeholder="Item Price" th:field="*{price}"
+								class="form-control" min="0" step="any">
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
 						</div>
 						<div class="form-group">
-							<label for="">Item Price</label>
-							<input type="number" placeholder="Item Price" th:field = "*{price}" class="form-control" min="0" step="any">
-							<div class="alert alert-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+							<label for="">Repair Cost</label> <input type="number"
+								placeholder="Repair Cost" th:field="*{repairCost}"
+								class="form-control" min="0" step="any">
+							<div class="alert alert-danger"
+								th:if="${#fields.hasErrors('repairCost')}"
+								th:errors="*{repairCost}"></div>
 						</div>
 						<div class="form-group">
-							<label for="">Repair Cost</label>
-							<input type="number" placeholder="Repair Cost" th:field = "*{repairCost}" class="form-control" min="0" step="any">
-							<div class="alert alert-danger" th:if="${#fields.hasErrors('repairCost')}" th:errors="*{repairCost}"></div>
+							<button type="submit" class="btn btn-success float-right">Submit</button>
+							<button type="reset" class="btn btn-danger">Reset</button>
 						</div>
-						<button type="submit" class="btn btn-primary btn-lg" style="float: right;">Submit</button>
-					</form>
-				</div>
+					</fieldset>
+				</form>
 			</div>
 		</div>
-		<!-- Form ends here -->
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<div th:replace="footer :: myFooter"></div>
-	</body>
+	</div>
+	<!-- Form ends here -->
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<div th:replace="footer :: myFooter"></div>
+</body>
 </html>
