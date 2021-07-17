@@ -23,7 +23,6 @@ public class Helper {
 		try {
 			newDate = dateFormat.parse(date);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return newDate;
@@ -40,7 +39,6 @@ public class Helper {
 		try {
 			cal.setTime(dateFormat.parse(issueDate));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		cal.add(Calendar.DATE, (int) l);
