@@ -47,7 +47,6 @@ public class VendorService implements IVendorService {
 			}
 		}
 		return vendor;
-
 	}
 
 	@Override
@@ -57,7 +56,6 @@ public class VendorService implements IVendorService {
 		if (vendor == null) {
 			errorMessage = "Vendor with name: " + vendorName + " does not exist.";
 		}
-
 		return errorMessage;
 	}
 }
