@@ -20,7 +20,7 @@ public class Loan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "loan_id")
-	private Long id;
+	private long id;
 
 	@Column(name = "loan_duration")
 	private long loanDuration;
@@ -132,7 +132,7 @@ public class Loan {
 			return true;
 		if (!(o instanceof Loan))
 			return false;
-		return id != null && id.equals(((Loan) o).getId());
+		return (Long) id != null && id == (((Loan) o).getId());
 	}
 
 	@Override

@@ -68,6 +68,11 @@ public class ItemIssuanceController {
 			result.addError(error);
 		} else {
 			item = itemService.getItemById(itemIssuanceDto.getItemId());
+			if (item.getQuantity() <= 0) {
+				err = "Item is out of stock.";
+				ObjectError error = new ObjectError("globalError", err);
+				result.addError(error);
+			}
 		}
 		if (result.hasErrors()) {
 			return "/Item Issuance/Create";
@@ -75,6 +80,8 @@ public class ItemIssuanceController {
 		Loan loan = itemIssuanceConvertor.dtoToModel(itemIssuanceDto);
 		borrower.addLoan(loan);
 		item.addLoan(loan);
+		item.descreaseQuantity();
+		itemService.saveItem(item);
 		itemIssuanceService.saveItemIssued(loan);
 		return "redirect:/ItemIssuanceView";
 	}
