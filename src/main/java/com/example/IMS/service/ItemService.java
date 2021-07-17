@@ -64,4 +64,28 @@ public class ItemService implements IItemService {
 		return itemId;
 	}
 
+	@Override
+	public void saveItem(Item item) {
+		itemRepository.save(item);
+	}
+
+	@Override
+	public String validateItemId(String itemName, String itemType) {
+		String errorMessage = "";
+		List<Item> itemList = itemRepository.findAll();
+		for (Item item : itemList) {
+			if (item.getName().equalsIgnoreCase(itemName)
+					& item.getItemType().getTypeName().equalsIgnoreCase(itemType)) {
+				errorMessage = "Item already exists in the database. Cannot add.";
+			}
+		}
+		return errorMessage;
+	}
+
+	@Override
+	public void deleteItem(long itemId) {
+		Item item = getItemById(itemId);
+		itemRepository.delete(item);
+	}
+
 }

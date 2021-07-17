@@ -20,34 +20,40 @@
 				<div class="spinner-grow text-dark"></div>
 				<div class="spinner-grow text-light"></div>
 				<hr>
-				<h1>Item Repair History</h1>
+				<h2>Delete Inventory Item</h2>
 				<hr>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-					<li class="breadcrumb-item active">Item Repair History</a></li>
+					<li class="breadcrumb-item active">Delete Inventory Item</li>
 				</ol>
 				<hr />
 				<h3>Are you sure you want to delete this Item?</h3>
 				<div>
 					<hr />
 					<dl class="dl-horizontal">
-						<dt>Repair ID</dt>
-						<dd th:text="${itemRepairDto.id}"></dd>
-						<dt>Item ID</dt>
-						<dd th:text="${itemRepairDto.itemId}"></dd>
-						<dt>Vendor ID</dt>
-						<dd th:text="${itemRepairDto.vendorId}"></dd>
-						<dt>Item Price</dt>
-						<dd th:text="${itemRepairDto.price}"></dd>
-						<dt>Repair Cost</dt>
-						<dd th:text="${itemRepairDto.repairCost}"></dd>
+						<dt>ID</dt>
+						<dd th:text="${itemDto.itemId}"></dd>
+						<dt>Name</dt>
+						<dd th:text="${itemDto.itemName}"></dd>
+						<dt>Price</dt>
+						<dd th:text="${itemDto.itemPrice}"></dd>
+						<dt>Quantity</dt>
+						<dd th:text="${itemDto.itemQuantity}"></dd>
+						<dt>Fine Rate</dt>
+						<dd th:text="${itemDto.fineRate}"></dd>
+						<dt>Invoice Number</dt>
+						<dd th:text="${itemDto.invoiceNumber}"></dd>
+						<dt>Vendor Name</dt>
+						<dd th:text="${itemDto.vendorName}"></dd>
+						<dt>Item Type</dt>
+						<dd th:text="${itemDto.itemType}"></dd>
 					</dl>
 				</div>
-				<form th:action="@{/ItemRepairDelete/{id}(id=${itemRepairDto.id})}"
+				<form th:action="@{/ItemDelete/{id}(id=${itemDto.itemId})}"
 					method="post">
 					<button type="submit" class="btn btn-danger">Delete</button>
-					<a th:href="@{/ItemRepairView}" class="btn btn-secondary active">
-						Go Back</a>
+					<a th:href="@{/ItemView}" class="btn btn-secondary active"> Go
+						Back</a>
 				</form>
 			</div>
 		</div>

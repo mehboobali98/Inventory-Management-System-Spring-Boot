@@ -3,7 +3,6 @@ package com.example.IMS.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,16 +36,16 @@ public class Item {
 	private String name;
 
 	@Column(name = "item_invoice_number")
-	private String invoiceNumber;
+	private long invoiceNumber;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
 	private List<Loan> loan = new ArrayList<>();
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_type_fk")
 	private ItemType itemType;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendor_id_fk")
 	private Vendor vendor;
 
@@ -90,11 +89,11 @@ public class Item {
 		this.name = name;
 	}
 
-	public String getInvoiceNumber() {
+	public long getInvoiceNumber() {
 		return invoiceNumber;
 	}
 
-	public void setInvoiceNumber(String invoiceNumber) {
+	public void setInvoiceNumber(long invoiceNumber) {
 		this.invoiceNumber = invoiceNumber;
 	}
 

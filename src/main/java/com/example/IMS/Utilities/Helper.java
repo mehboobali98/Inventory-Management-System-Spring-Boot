@@ -9,11 +9,13 @@ import java.util.Date;
 public class Helper {
 
 	private static DateFormat dateFormat;
-	public static double fineRate;
+	public static double highPrecedenceFineRate;
+	public static double lowPrecedenceFineRate;
 
 	static {
 		dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		fineRate = 100;
+		highPrecedenceFineRate = 100;
+		lowPrecedenceFineRate = 50;
 	}
 
 	public static Date convertStringToDate(String date) {
