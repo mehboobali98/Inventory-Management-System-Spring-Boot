@@ -22,106 +22,132 @@
 				<div class="spinner-grow text-dark"></div>
 				<div class="spinner-grow text-light"></div>
 				<hr>
-				<h2>Edit Inventory Item</h2>
-				<hr>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
 					<li class="breadcrumb-item active">Edit Inventory Item</a></li>
 				</ol>
 				<form th:action="@{/ItemCreate}" th:object="${itemDto}"
 					method="post">
-					<div class="form-group">
-						<input type="hidden" th:field="*{itemId}" class="form-control">
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Item Name</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input name="itemName"
-									placeholder="Enter Item Name" th:field="*{itemName}"
-									class="form-control" type="text">
+					<fieldset class="border p-2">
+						<legend class="w-auto"> Edit Inventory Item </legend>
+						<div class="alert alert-danger"
+							th:if="${#fields.hasErrors('global')}">
+							<ul>
+								<li th:each="err : ${#fields.errors('global')}" th:text="${err}"></li>
+							</ul>
+						</div>
+						<div class="form-group">
+							<input type="hidden" th:field="*{itemId}" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Item Name</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input name="itemName"
+										placeholder="Enter Item Name" th:field="*{itemName}"
+										class="form-control" type="text">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('itemName')}"
+									th:errors="*{itemName}"></div>
 							</div>
 						</div>
-					</div>
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 control-label">Item Price</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input name="itemPrice"
-									placeholder="Enter Item Price" th:field="*{itemPrice}"
-									class="form-control" type="number" step="any">
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label">Item Price</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input name="itemPrice"
+										placeholder="Enter Item Price" th:field="*{itemPrice}"
+										class="form-control" type="number" step="any">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('itemPrice')}"
+									th:errors="*{itemPrice}"></div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Item Quantity</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input
-									name="itemQuantity" placeholder="Enter Item Quantity"
-									th:field="*{itemQuantity}" class="form-control" type="number"
-									step="1">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Item Quantity</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input
+										name="itemQuantity" placeholder="Enter Item Quantity"
+										th:field="*{itemQuantity}" class="form-control" type="number"
+										step="1">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('itemQuantity')}"
+									th:errors="*{itemQuantity}"></div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Fine Rate</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input name="fineRate"
-									placeholder="Enter Fine Rate" th:field="*{fineRate}"
-									class="form-control" type="number" step="any">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Fine Rate</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input name="fineRate"
+										placeholder="Enter Fine Rate" th:field="*{fineRate}"
+										class="form-control" type="number" step="any">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('fineRate')}"
+									th:errors="*{fineRate}"></div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Invoice Number</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input
-									name="invoiceNumber" placeholder="Enter Invoice Number"
-									th:field="*{invoiceNumber}" class="form-control" type="number"
-									step="1">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Invoice Number</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input
+										name="invoiceNumber" placeholder="Enter Invoice Number"
+										th:field="*{invoiceNumber}" class="form-control" type="number"
+										step="1">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('invoiceNumber')}"
+									th:errors="*{invoiceNumber}"></div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Vendor Name</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input name="vendorName"
-									placeholder="Enter Vendor Number" th:field="*{vendorName}"
-									class="form-control" type="number" step="1">
+						<div class="form-group">
+							<label class="col-md-4 control-label">Vendor Name</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input name="vendorName"
+										placeholder="Enter Vendor Number" th:field="*{vendorName}"
+										class="form-control" type="number" step="1">
+								</div>
+								<div class="alert alert-danger"
+									th:if="${#fields.hasErrors('vendorName')}"
+									th:errors="*{vendorName}"></div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label">Item Type</label>
-						<div class="col-md-4 inputGroupContainer">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <select name="itemType"
-									th:field="*{itemType}">
-									<option th:each="itemType : ${itemTypeList}"
-										th:value="${itemType.typeName}" th:text="${itemType.typeName}">
-								</select>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Item Type</label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <select
+										class="form-control" name="itemType" th:field="*{itemType}">
+										<option th:each="itemType : ${itemTypeList}"
+											th:value="${itemType.typeName}"
+											th:text="${itemType.typeName}">
+									</select>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-4 control-label"></label>
-						<div class="col-md-4">
-							<button id="addBtn" type="submit" class="btn btn-success btn-lg">Add
-								Item</button>
+						<div class="form-group">
+							<label class="col-md-4 control-label"></label>
+							<div class="col-md-4">
+								<button id="addBtn" type="submit"
+									class="btn btn-success float-right">Edit Item</button>
+							</div>
 						</div>
-					</div>
+					</fieldset>
 				</form>
 			</div>
 		</div>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,10 +51,35 @@ public class ItemController {
 	}
 
 	@PostMapping("/ItemCreate")
-	public String Create(@Valid @ModelAttribute("itemDto") ItemDto itemDto, BindingResult result) {
-		Vendor vendor = vendorService.getVendorByName(itemDto.getVendorName());
-		ItemType itemType = itemTypeService.getItemTypeByName(itemDto.getItemType());
-		Item item = itemConvertor.dtoToModel(itemDto);
+	public String Create(@Valid @ModelAttribute("itemDto") ItemDto itemDto, BindingResult result, Model model) {
+		Vendor vendor = null;
+		ItemType itemType = null;
+		Item item = null;
+		String err = vendorService.validateVendorName(itemDto.getVendorName());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		} else {
+			vendor = vendorService.getVendorByName(itemDto.getVendorName());
+		}
+		err = itemTypeService.validateItemTypeByName(itemDto.getItemType());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		} else {
+			itemType = itemTypeService.getItemTypeByName(itemDto.getItemType());
+		}
+		err = itemService.validateItemId(itemDto.getItemName(), itemDto.getItemType());
+		if (!err.isEmpty()) {
+			ObjectError error = new ObjectError("globalError", err);
+			result.addError(error);
+		}
+
+		if (result.hasErrors()) {
+			model.addAttribute("itemDtoList", itemConvertor.modelToDto(itemService.getAllItems()));
+			return "/Item/Create";
+		}
+		item = itemConvertor.dtoToModel(itemDto);
 		item.setVendor(vendor);
 		item.setItemType(itemType);
 		itemService.saveItem(item);
