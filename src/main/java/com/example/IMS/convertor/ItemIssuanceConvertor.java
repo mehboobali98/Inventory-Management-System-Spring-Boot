@@ -14,20 +14,23 @@ public class ItemIssuanceConvertor {
 
 	public ItemIssuanceDto modelToDto(Loan loan) {
 		ItemIssuanceDto dto = new ItemIssuanceDto();
-		dto.setId(loan.getId());
-		dto.setLoanDuration(loan.getLoanDuration());
-		dto.setIssueDate(loan.getIssueDate());
-		dto.setDueDate(Helper.getDueDate(loan.getIssueDate(), loan.getLoanDuration()));
-		dto.setItemId(loan.getItem().getId());
-		dto.setBorrowerId(loan.getBorrower().getId());
-		dto.setFineAmount(loan.getTotalFine());
-		dto.setReturnDate(loan.getReturnDate());
+		try {
+			dto.setId(loan.getId());
+			dto.setLoanDuration(loan.getLoanDuration());
+			dto.setIssueDate(loan.getIssueDate());
+			dto.setDueDate(Helper.getDueDate(loan.getIssueDate(), loan.getLoanDuration()));
+			dto.setItemId(loan.getItem().getId());
+			dto.setBorrowerId(loan.getBorrower().getId());
+			dto.setFineAmount(loan.getTotalFine());
+			dto.setReturnDate(loan.getReturnDate());
+		} catch (NullPointerException e) {
+			System.out.println("Null Pointer Exception Caught in Item Issuance Convertor.");
+		}
 		return dto;
 	}
 
 	public Loan dtoToModel(ItemIssuanceDto dto) {
 		Loan loan = new Loan();
-		loan.setId(dto.getId());
 		loan.setLoanDuration(dto.getLoanDuration());
 		loan.setIssueDate(Helper.getCurrentTime());
 		loan.setTotalFine(dto.getFineAmount());
