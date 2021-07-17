@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<div th:replace="header :: myHeader"></div>
-	</head>
-	<body class="sb-nav-fixed">
-		<div th:replace="navbar :: myNavbar"></div>
-		<div id="layoutSidenav">
-			<div th:replace="sidebar :: mySidebar"></div>
-			<div id="layoutSidenav_content">
-				<div class="container">
-					<br>
-					<div class="spinner-grow text-muted"></div>
-					<div class="spinner-grow text-primary"></div>
-					<div class="spinner-grow text-success"></div>
-					<div class="spinner-grow text-info"></div>
-					<div class="spinner-grow text-warning"></div>
-					<div class="spinner-grow text-danger"></div>
-					<div class="spinner-grow text-secondary"></div>
-					<div class="spinner-grow text-dark"></div>
-					<div class="spinner-grow text-light"></div>
-					<hr>
-					<h1> Fine History </h1>
-					<hr>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-						<li class="breadcrumb-item active"> Fine History</li>
-					</ol>
-					<table class="table table-bordered table-hover">
-						<thead class="thead-dark">
-							<tr>
-								<th>Item ID</th>
-								<th>Borrower ID</th>
-								<th>Loan Duration</th>
-								<th>Issue Date</th>
-								<th>Due Date </th>
-								<th>Return Date</th>
-								<th>Fine Amount </th>
-								<th style="text-align:center"> Options </th>
-							</tr>
-						</thead>
-						<tbody th:if="${#lists.isEmpty(itemsWithFineList)}">
-							<tr>
-								<td colspan="3" style="color: red;">No Data found</td>
-							</tr>
-						</tbody>
-						<tbody id="myTable">
-							<tr th:each="itemIssuanceDto : ${itemsWithFineList}">
-								<td th:text="${itemIssuanceDto.itemId}"></td>
-								<td th:text="${itemIssuanceDto.borrowerId}"></td>
-								<td th:text="${itemIssuanceDto.loanDuration}"></td>
-								<td th:text="${itemIssuanceDto.issueDate}"></td>
-								<td th:text="${itemIssuanceDto.dueDate}"></td>
-								<td th:text="${itemIssuanceDto.returnDate}"></td>
-								<td th:text="${itemIssuanceDto.fineAmount}"></td>
-								<td th:if="${itemIssuanceDto.fineAmount > 0}"> 
-									<a th:href="@{/FineCreate}" class="btn btn-danger"> Pay Fine</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+<head>
+<div th:replace="header :: myHeader"></div>
+</head>
+<body class="sb-nav-fixed">
+	<div th:replace="navbar :: myNavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="sidebar :: mySidebar"></div>
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<br>
+				<div class="spinner-grow text-muted"></div>
+				<div class="spinner-grow text-primary"></div>
+				<div class="spinner-grow text-success"></div>
+				<div class="spinner-grow text-info"></div>
+				<div class="spinner-grow text-warning"></div>
+				<div class="spinner-grow text-danger"></div>
+				<div class="spinner-grow text-secondary"></div>
+				<div class="spinner-grow text-dark"></div>
+				<div class="spinner-grow text-light"></div>
+				<hr>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+					<li class="breadcrumb-item active">Fine History</li>
+				</ol>
+				<table class="table table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th>Item ID</th>
+							<th>Borrower ID</th>
+							<th>Loan Duration</th>
+							<th>Issue Date</th>
+							<th>Due Date</th>
+							<th>Return Date</th>
+							<th>Fine Amount</th>
+							<th style="text-align: center">Options</th>
+						</tr>
+					</thead>
+					<tbody th:if="${#lists.isEmpty(itemsWithFineList)}">
+						<tr>
+							<td colspan="3" style="color: red;">No Data found</td>
+						</tr>
+					</tbody>
+					<tbody id="myTable">
+						<tr th:each="itemIssuanceDto : ${itemsWithFineList}">
+							<td th:text="${itemIssuanceDto.itemId}"></td>
+							<td th:text="${itemIssuanceDto.borrowerId}"></td>
+							<td th:text="${itemIssuanceDto.loanDuration}"></td>
+							<td th:text="${itemIssuanceDto.issueDate}"></td>
+							<td th:text="${itemIssuanceDto.dueDate}"></td>
+							<td th:text="${itemIssuanceDto.returnDate}"></td>
+							<td th:text="${itemIssuanceDto.fineAmount}"></td>
+							<td th:if="${itemIssuanceDto.fineAmount > 0}"><a
+								th:href="@{/FineCreate}" class="btn btn-danger"> Pay Fine</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
