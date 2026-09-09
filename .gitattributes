@@ -1,0 +1,6 @@
+# The SB Admin dashboard theme ships as one large stylesheet and its chart demos.
+# Neither is project code, and together they outweigh the Java by three to one,
+# which makes Linguist report this as a CSS repository.
+src/main/resources/static/css/* linguist-vendored
+src/main/resources/static/js/chart-*-demo.js linguist-vendored
+src/main/resources/static/js/datatables-demo.js linguist-vendored
